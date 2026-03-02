@@ -61,7 +61,7 @@ export default function ContactsPage() {
                     </div>
                     <div>
                       <p className="text-gray-500 text-xs font-600 uppercase tracking-wide mb-1">Регион работы</p>
-                      <p className="text-gray-900 font-bold text-base">Самара и Самарская область</p>
+                      <p className="text-gray-900 font-bold text-base">Москва и Московская область</p>
                     </div>
                   </div>
                 </div>

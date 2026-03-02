@@ -26,7 +26,7 @@ export default function AboutPage({ onOpenModal }: AboutPageProps) {
         <div className="container mx-auto px-4 text-center text-white">
           <h1 className="text-4xl md:text-5xl font-black mb-4">О компании</h1>
           <p className="text-green-200 text-lg max-w-2xl mx-auto">
-            Более 10 лет строим и ремонтируем дома в Самаре и области
+            Более 10 лет строим и ремонтируем дома в Москве и области
           </p>
         </div>
       </div>

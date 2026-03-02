@@ -114,7 +114,7 @@ export default function HomePage({ onOpenModal }: HomePageProps) {
                 <span className="block text-green-300">под ключ</span>
               </h1>
               <p className="text-green-100 text-lg md:text-xl mb-4 leading-relaxed">
-                Пристройки, кровля, фундамент, реконструкция домов — выполняем работу любой сложности в Самаре и области
+                Пристройки, кровля, фундамент, реконструкция домов — выполняем работу любой сложности в Москве и Московской области
               </p>
               <div className="flex flex-wrap gap-3 mb-10">
                 {["Без посредников", "Фиксированная цена", "Гарантия 3 года"].map((tag) => (

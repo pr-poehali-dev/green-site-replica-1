@@ -56,7 +56,7 @@ export default function Footer({ navigate }: FooterProps) {
               </div>
               <div className="flex items-center gap-2 text-green-200">
                 <Icon name="MapPin" size={16} />
-                <span className="text-sm">Самара и область</span>
+                <span className="text-sm">Москва и область</span>
               </div>
             </div>
           </div>
