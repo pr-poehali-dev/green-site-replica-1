@@ -185,23 +185,22 @@ export default function HomePage({ onOpenModal }: HomePageProps) {
       </section>
 
       {/* ADVANTAGES */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-12 bg-gray-50/60 border-y border-gray-100">
         <div className="container mx-auto px-4">
           <SectionReveal>
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-3">Почему выбирают нас</h2>
-              <p className="text-gray-500 max-w-xl mx-auto">Работаем честно, прозрачно и с гарантией результата</p>
-            </div>
+            <p className="text-xs font-600 uppercase tracking-[0.18em] text-gray-400 text-center mb-8" style={{ fontFamily: "'Georgia', serif", letterSpacing: "0.2em" }}>
+              почему выбирают нас
+            </p>
           </SectionReveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-gray-200">
             {advantages.map((adv, i) => (
-              <SectionReveal key={i} delay={i * 100}>
-                <div className="bg-white rounded-2xl p-6 border border-green-100 hover-lift text-center">
-                  <div className="w-16 h-16 rounded-2xl bg-green-100 flex items-center justify-center mx-auto mb-4">
-                    <Icon name={adv.icon} size={30} className="text-green-600" />
-                  </div>
-                  <h3 className="font-bold text-gray-900 text-base mb-2">{adv.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{adv.desc}</p>
+              <SectionReveal key={i} delay={i * 80}>
+                <div className="px-6 py-2 flex flex-col items-center text-center group">
+                  <Icon name={adv.icon} size={20} className="text-gray-300 mb-3 group-hover:text-green-400 transition-colors duration-300" />
+                  <h3 className="text-gray-500 text-sm font-500 mb-1 group-hover:text-gray-700 transition-colors duration-300" style={{ fontFamily: "'Georgia', serif" }}>
+                    {adv.title}
+                  </h3>
+                  <p className="text-gray-400 text-xs leading-relaxed hidden lg:block">{adv.desc}</p>
                 </div>
               </SectionReveal>
             ))}
