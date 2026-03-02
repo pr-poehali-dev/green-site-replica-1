@@ -506,7 +506,7 @@ export default function HomePage({ onOpenModal }: HomePageProps) {
                     </div>
                     <div>
                       <p className="text-green-200 text-sm">Регион работы</p>
-                      <p className="text-white font-bold">Самара и Самарская область</p>
+                      <p className="text-white font-bold">Москва и Московская область</p>
                     </div>
                   </div>
                 </div>

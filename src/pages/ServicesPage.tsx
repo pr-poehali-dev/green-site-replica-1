@@ -10,7 +10,6 @@ const services = [
     icon: "Home",
     title: "Пристройки",
     desc: "Строим пристройки любой сложности: веранды, террасы, дополнительные комнаты. Увеличиваем жилую площадь без сноса существующих конструкций.",
-    price: "от 12 000 ₽/м²",
     features: ["Проектирование и согласование", "Любой материал", "Гарантия 3 года"],
     img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
   },
@@ -18,7 +17,6 @@ const services = [
     icon: "Triangle",
     title: "Кровля",
     desc: "Монтаж, ремонт и замена кровли всех видов. Работаем с металлочерепицей, профнастилом, мягкой кровлей, ондулином.",
-    price: "от 600 ₽/м²",
     features: ["Быстрые сроки", "Материал в стоимости", "Гарантия на стыки"],
     img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80",
   },
@@ -26,7 +24,6 @@ const services = [
     icon: "RotateCcw",
     title: "Реконструкция домов",
     desc: "Полная реконструкция и капитальный ремонт частных домов. Усиление несущих конструкций, перепланировка, замена коммуникаций.",
-    price: "от 8 000 ₽/м²",
     features: ["Технический надзор", "Поэтапная оплата", "Фиксированная смета"],
     img: "https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=600&q=80",
   },
@@ -34,7 +31,6 @@ const services = [
     icon: "Layers",
     title: "Фундамент",
     desc: "Устройство ленточного, свайного, плитного фундамента. Усиление и гидроизоляция существующих оснований.",
-    price: "от 5 500 ₽/м²",
     features: ["Геологическое исследование", "Армирование по нормам", "Гарантия 5 лет"],
     img: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&q=80",
   },
@@ -42,7 +38,6 @@ const services = [
     icon: "Wind",
     title: "Утепление",
     desc: "Утепление стен, кровли, пола, фундамента современными материалами. Снижение теплопотерь до 40%.",
-    price: "от 450 ₽/м²",
     features: ["Минвата, пенопласт, ППУ", "Влажность исключена", "Экономия на отоплении"],
     img: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&q=80",
   },
@@ -50,7 +45,6 @@ const services = [
     icon: "PaintBucket",
     title: "Отделка",
     desc: "Внутренняя и внешняя отделка: штукатурка, шпаклёвка, покраска, укладка плитки, устройство полов.",
-    price: "от 800 ₽/м²",
     features: ["Чистовая отделка", "Черновая отделка", "Под ключ"],
     img: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=600&q=80",
   },
@@ -58,7 +52,6 @@ const services = [
     icon: "Building2",
     title: "Фасады",
     desc: "Монтаж навесных вентилируемых фасадов, сайдинга, штукатурных систем. Преображаем внешний вид здания.",
-    price: "от 1 200 ₽/м²",
     features: ["Металлосайдинг", "Фиброцементные панели", "Штукатурные системы"],
     img: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80",
   },
@@ -101,8 +94,7 @@ export default function ServicesPage({ onOpenModal }: ServicesPageProps) {
                           </span>
                         ))}
                       </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-green-600 font-black text-xl">{svc.price}</span>
+                      <div className="flex justify-end">
                         <button onClick={onOpenModal} className="btn-green">
                           Заказать <Icon name="ArrowRight" size={16} />
                         </button>
