@@ -13,7 +13,8 @@ const services = [
   { icon: "Layers", title: "Фундамент", desc: "Ленточный, свайный, плитный фундамент. Усиление существующих фундаментов", img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/1165095b-2076-4c30-b666-a6c1ef9fad18.jpg" },
   { icon: "Wind", title: "Утепление", desc: "Утепление стен, кровли, пола. Современные материалы — снижение теплопотерь до 40%", img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/ac3b3adb-1d0d-48c9-a317-e982b83d839b.jpg" },
   { icon: "PaintBucket", title: "Отделка", desc: "Внутренняя и внешняя отделка. Штукатурка, шпаклёвка, покраска, укладка плитки", img: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=600&q=80" },
-  { icon: "Building2", title: "Фасады", desc: "Монтаж навесных фасадов, сайдинга, штукатурных систем. Преображаем облик здания", img: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80" },
+  { icon: "Building2", title: "Фасады", desc: "Монтаж навесных фасадов, сайдинга, штукатурных систем. Преображаем облик здания", img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/0a1ce039-eeaa-4681-893b-0255092dccbc.jpg" },
+  { icon: "Shield", title: "Заборы и ограждения", desc: "Кирпичные, металлические, комбинированные заборы. Установка ворот и калиток под ключ", img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/8a9525ab-56f0-4ec9-84f6-c9affaa14bf9.jpg" },
 ];
 
 const advantages = [
