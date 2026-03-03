@@ -44,11 +44,11 @@ export default function Footer({ navigate }: FooterProps) {
             <h4 className="font-bold text-lg mb-4 text-green-300">Контакты</h4>
             <div className="space-y-3">
               <a
-                href="tel:+79092111130"
+                href="tel:+79804800123"
                 className="flex items-center gap-2 text-green-200 hover:text-white transition-colors"
               >
                 <Icon name="Phone" size={16} />
-                <span className="font-bold">+7 909 211 1130</span>
+                <span className="font-bold">+7 980 480 0123</span>
               </a>
               <div className="flex items-center gap-2 text-green-200">
                 <Icon name="Clock" size={16} />

@@ -32,7 +32,7 @@ export default function ContactsPage() {
                 <h2 className="text-2xl font-black text-gray-900 mb-8">Как с нами связаться</h2>
                 <div className="space-y-5">
                   <a
-                    href="tel:+79092111130"
+                    href="tel:+79804800123"
                     className="flex items-center gap-4 p-5 bg-white rounded-2xl border border-green-100 hover-lift group"
                   >
                     <div className="w-14 h-14 rounded-xl bg-green-100 flex items-center justify-center group-hover:bg-green-600 transition-colors">
@@ -40,7 +40,7 @@ export default function ContactsPage() {
                     </div>
                     <div>
                       <p className="text-gray-500 text-xs font-600 uppercase tracking-wide mb-1">Позвонить</p>
-                      <p className="text-gray-900 font-black text-xl">+7 909 211 1130</p>
+                      <p className="text-gray-900 font-black text-xl">+7 980 480 0123</p>
                     </div>
                     <Icon name="ArrowRight" size={18} className="ml-auto text-green-500" />
                   </a>
@@ -67,7 +67,7 @@ export default function ContactsPage() {
                 </div>
 
                 <a
-                  href="tel:+79092111130"
+                  href="tel:+79804800123"
                   className="btn-green mt-8 inline-flex text-base py-4 px-8"
                 >
                   <Icon name="PhoneCall" size={20} />
@@ -140,9 +140,9 @@ export default function ContactsPage() {
                   </div>
                   <h3 className="text-2xl font-black text-gray-900 mb-2">Заявка принята!</h3>
                   <p className="text-gray-500 mb-6">Мы свяжемся с вами в течение 15 минут</p>
-                  <a href="tel:+79092111130" className="btn-green">
+                  <a href="tel:+79804800123" className="btn-green">
                     <Icon name="Phone" size={18} />
-                    +7 909 211 1130
+                    +7 980 480 0123
                   </a>
                 </div>
               )}

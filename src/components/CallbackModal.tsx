@@ -78,9 +78,9 @@ export default function CallbackModal({ onClose }: CallbackModalProps) {
             <p className="text-gray-500 mb-6">
               Мы перезвоним вам в течение 15 минут
             </p>
-            <a href="tel:+79092111130" className="btn-green justify-center inline-flex">
+            <a href="tel:+79804800123" className="btn-green justify-center inline-flex">
               <Icon name="Phone" size={18} />
-              +7 909 211 1130
+              +7 980 480 0123
             </a>
           </div>
         )}

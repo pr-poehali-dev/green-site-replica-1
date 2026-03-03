@@ -56,11 +56,11 @@ export default function Header({ currentPage, navigate, onOpenModal }: HeaderPro
 
         <div className="hidden md:flex items-center gap-3">
           <a
-            href="tel:+79092111130"
+            href="tel:+79804800123"
             className="flex items-center gap-2 text-gray-800 font-bold text-base hover:text-green-600 transition-colors"
           >
             <Icon name="Phone" size={18} className="text-green-500" />
-            +7 909 211 1130
+            +7 980 480 0123
           </a>
           <button onClick={onOpenModal} className="btn-green text-sm px-5 py-3">
             Заказать звонок
@@ -92,9 +92,9 @@ export default function Header({ currentPage, navigate, onOpenModal }: HeaderPro
               </button>
             ))}
             <div className="flex items-center gap-3 pt-3 border-t border-gray-100">
-              <a href="tel:+79092111130" className="flex items-center gap-2 text-gray-800 font-bold">
+              <a href="tel:+79804800123" className="flex items-center gap-2 text-gray-800 font-bold">
                 <Icon name="Phone" size={18} className="text-green-500" />
-                +7 909 211 1130
+                +7 980 480 0123
               </a>
             </div>
             <button onClick={() => { onOpenModal(); setMenuOpen(false); }} className="btn-green mt-2 justify-center">
