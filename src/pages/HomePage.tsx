@@ -102,29 +102,25 @@ export default function HomePage({ onOpenModal }: HomePageProps) {
     <>
       {/* HERO */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        {/* Cartoon background illustration */}
+        {/* Background photo */}
         <div
           className="absolute inset-0 w-full h-full"
           style={{
-            backgroundImage: `url(https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/9e0ceeed-66eb-4435-bf82-40c2d93893b1.jpg)`,
-            backgroundSize: "contain",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center bottom",
-            opacity: 0.92,
+            backgroundImage: `url(https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/dbae6f02-94f8-4cae-9666-90a81810f733.jpg)`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
         />
-        {/* Sky gradient above illustration */}
+        {/* Dark overlay for readability */}
+        <div
+          className="absolute inset-0"
+          style={{ background: "rgba(0,0,0,0.52)" }}
+        />
+        {/* Extra gradient on top so header area is darker */}
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(180deg, #e8f5ff 0%, #f0faf0 40%, transparent 75%)",
-          }}
-        />
-        {/* Soft vignette at center so text pops */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "radial-gradient(ellipse 70% 50% at 50% 40%, rgba(255,255,255,0.55) 0%, transparent 80%)",
+            background: "linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.45) 100%)",
           }}
         />
 
@@ -132,7 +128,7 @@ export default function HomePage({ onOpenModal }: HomePageProps) {
         <div className="relative z-10 flex flex-col items-center text-center px-4 pb-24">
           <div
             className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-bold mb-8"
-            style={{ background: "rgba(255,255,255,0.85)", color: "#2d7a3a", boxShadow: "0 2px 16px rgba(0,0,0,0.08)" }}
+            style={{ background: "rgba(255,255,255,0.15)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", backdropFilter: "blur(8px)" }}
           >
             <Icon name="Star" size={15} className="text-yellow-400" />
             Более 500 объектов сдано
@@ -141,20 +137,20 @@ export default function HomePage({ onOpenModal }: HomePageProps) {
           <h1
             className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-5"
             style={{
-              color: "#1a3a1f",
-              textShadow: "0 2px 24px rgba(255,255,255,0.9), 0 1px 0 rgba(255,255,255,0.6)",
+              color: "#ffffff",
+              textShadow: "0 2px 20px rgba(0,0,0,0.5)",
               letterSpacing: "-0.02em",
             }}
           >
             Строительство и ремонт<br />
-            <span style={{ color: "#2d8a40" }}>под ключ</span>
+            <span style={{ color: "#6ee87a" }}>под ключ</span>
           </h1>
 
           <p
             className="text-lg md:text-xl max-w-xl mb-10 leading-relaxed font-medium"
             style={{
-              color: "#2d4a30",
-              textShadow: "0 1px 12px rgba(255,255,255,0.95)",
+              color: "rgba(255,255,255,0.88)",
+              textShadow: "0 1px 8px rgba(0,0,0,0.4)",
             }}
           >
             Пристройки, кровля, фундамент, реконструкция домов —<br className="hidden md:block" />
@@ -166,9 +162,9 @@ export default function HomePage({ onOpenModal }: HomePageProps) {
               <span
                 key={tag}
                 className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold"
-                style={{ background: "rgba(255,255,255,0.8)", color: "#2d6b38", border: "1.5px solid rgba(45,138,64,0.2)" }}
+                style={{ background: "rgba(255,255,255,0.15)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", backdropFilter: "blur(6px)" }}
               >
-                <Icon name="Check" size={14} className="text-green-500" />
+                <Icon name="Check" size={14} className="text-green-400" />
                 {tag}
               </span>
             ))}
