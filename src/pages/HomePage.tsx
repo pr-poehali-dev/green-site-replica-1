@@ -52,12 +52,11 @@ const reviews = [
 ];
 
 const galleryItems = [
-  { img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80", title: "Пристройка веранды" },
-  { img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80", title: "Монтаж кровли" },
-  { img: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=600&q=80", title: "Внутренняя отделка" },
-  { img: "https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=600&q=80", title: "Реконструкция дома" },
-  { img: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80", title: "Фасад здания" },
-  { img: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&q=80", title: "Устройство фундамента" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/8de3ef90-12f7-49ef-9d04-00a6939e3a52.jpg", title: "Дом из бруса" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/96415a9f-8a5b-4264-a502-b53e02a55252.jpg", title: "Деревянный дом с террасой" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/85f9c102-d23d-484d-9e1e-523a2277947f.jpg", title: "Строительство из газобетона" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/58972d80-7b3d-42eb-a699-b6024809a1f1.jpg", title: "Двухэтажный коттедж" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/b55a0e4c-bcf9-482c-a2aa-f563b9fe363d.jpg", title: "Забор с воротами" },
 ];
 
 const workTypes = ["Пристройка", "Кровля", "Реконструкция", "Фундамент", "Утепление", "Отделка", "Фасад"];

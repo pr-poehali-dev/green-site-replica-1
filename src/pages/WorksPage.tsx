@@ -7,18 +7,14 @@ interface WorksPageProps {
 }
 
 const works = [
-  { img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80", title: "Пристройка-веранда", desc: "Пристройка 30 м² из газобетона с остеклением", category: "Пристройки", year: "2024" },
-  { img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80", title: "Монтаж кровли", desc: "Металлочерепица 180 м², замена стропильной системы", category: "Кровля", year: "2024" },
-  { img: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800&q=80", title: "Отделка квартиры", desc: "Капитальный ремонт 85 м² под ключ", category: "Отделка", year: "2023" },
-  { img: "https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&q=80", title: "Реконструкция дома", desc: "Перепланировка и утепление дома 120 м²", category: "Реконструкция", year: "2024" },
-  { img: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80", title: "Фасад здания", desc: "Вентилируемый фасад из фиброцементных панелей", category: "Фасады", year: "2023" },
-  { img: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80", title: "Ленточный фундамент", desc: "Фундамент 450 м.п. под коттедж", category: "Фундамент", year: "2024" },
-  { img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80", title: "Пристройка гаража", desc: "Гараж 36 м² из кирпича с воротами", category: "Пристройки", year: "2023" },
-  { img: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80", title: "Утепление дома", desc: "Минвата 200 м², штукатурная система", category: "Утепление", year: "2024" },
-  { img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80", title: "Новый дом", desc: "Дом из газобетона 160 м² под ключ", category: "Реконструкция", year: "2024" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/8de3ef90-12f7-49ef-9d04-00a6939e3a52.jpg", title: "Дом из бруса", desc: "Двухэтажный дом из бруса 90 м² под ключ", category: "Строительство", year: "2024" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/96415a9f-8a5b-4264-a502-b53e02a55252.jpg", title: "Деревянный дом с террасой", desc: "Дом из бруса с открытой террасой и гаражом", category: "Строительство", year: "2024" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/85f9c102-d23d-484d-9e1e-523a2277947f.jpg", title: "Коттедж из газобетона", desc: "Строительство коттеджа 160 м² из газобетона", category: "Строительство", year: "2025" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/58972d80-7b3d-42eb-a699-b6024809a1f1.jpg", title: "Двухэтажный коттедж", desc: "Двухэтажный коттедж из газобетона 200 м²", category: "Строительство", year: "2025" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/b55a0e4c-bcf9-482c-a2aa-f563b9fe363d.jpg", title: "Забор с воротами", desc: "Металлический забор с кирпичными столбами и воротами", category: "Заборы", year: "2024" },
 ];
 
-const categories = ["Все", "Пристройки", "Кровля", "Реконструкция", "Фундамент", "Утепление", "Отделка", "Фасады"];
+const categories = ["Все", "Строительство", "Заборы"];
 
 export default function WorksPage({ onOpenModal }: WorksPageProps) {
   const [filter, setFilter] = useState("Все");
