@@ -7,11 +7,11 @@ interface HomePageProps {
 }
 
 const services = [
-  { icon: "Home", title: "Пристройки", desc: "Расширяем жилую площадь: веранды, террасы, пристройки к дому любой сложности", img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" },
-  { icon: "Triangle", title: "Кровля", desc: "Монтаж, ремонт и замена кровли. Работаем с металлочерепицей, профнастилом, мягкой кровлей", img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" },
-  { icon: "RotateCcw", title: "Реконструкция домов", desc: "Полная реконструкция и капитальный ремонт домов. Возвращаем зданиям новую жизнь", img: "https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=600&q=80" },
-  { icon: "Layers", title: "Фундамент", desc: "Ленточный, свайный, плитный фундамент. Усиление существующих фундаментов", img: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&q=80" },
-  { icon: "Wind", title: "Утепление", desc: "Утепление стен, кровли, пола. Современные материалы — снижение теплопотерь до 40%", img: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&q=80" },
+  { icon: "Home", title: "Пристройки", desc: "Расширяем жилую площадь: веранды, террасы, пристройки к дому любой сложности", img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/30e12811-5bb7-4427-8ddf-a9769a35537f.jpg" },
+  { icon: "Triangle", title: "Кровля", desc: "Монтаж, ремонт и замена кровли. Работаем с металлочерепицей, профнастилом, мягкой кровлей", img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/97350343-eb70-4cec-9657-3435d5e5ab6e.jpg" },
+  { icon: "RotateCcw", title: "Реконструкция домов", desc: "Полная реконструкция и капитальный ремонт домов. Возвращаем зданиям новую жизнь", img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/e695140e-e500-4a6f-8d72-b7f138c67732.jpg" },
+  { icon: "Layers", title: "Фундамент", desc: "Ленточный, свайный, плитный фундамент. Усиление существующих фундаментов", img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/1165095b-2076-4c30-b666-a6c1ef9fad18.jpg" },
+  { icon: "Wind", title: "Утепление", desc: "Утепление стен, кровли, пола. Современные материалы — снижение теплопотерь до 40%", img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/ac3b3adb-1d0d-48c9-a317-e982b83d839b.jpg" },
   { icon: "PaintBucket", title: "Отделка", desc: "Внутренняя и внешняя отделка. Штукатурка, шпаклёвка, покраска, укладка плитки", img: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=600&q=80" },
   { icon: "Building2", title: "Фасады", desc: "Монтаж навесных фасадов, сайдинга, штукатурных систем. Преображаем облик здания", img: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80" },
 ];
