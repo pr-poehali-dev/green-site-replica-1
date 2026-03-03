@@ -101,86 +101,114 @@ export default function HomePage({ onOpenModal }: HomePageProps) {
   return (
     <>
       {/* HERO */}
-      <section className="hero-bg pt-28 pb-16 md:pt-36 md:pb-24 min-h-screen flex items-center">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="text-white">
-              <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-4 py-2 text-sm font-600 text-green-200 mb-6">
-                <Icon name="Star" size={14} className="text-yellow-400" />
-                Более 500 объектов сдано
-              </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6">
-                Строительство и ремонт
-                <span className="block text-green-300">под ключ</span>
-              </h1>
-              <p className="text-green-100 text-lg md:text-xl mb-4 leading-relaxed">
-                Пристройки, кровля, фундамент, реконструкция домов — выполняем работу любой сложности в Москве и Московской области
-              </p>
-              <div className="flex flex-wrap gap-3 mb-10">
-                {["Без посредников", "Фиксированная цена", "Гарантия 3 года"].map((tag) => (
-                  <span key={tag} className="flex items-center gap-1.5 bg-white/10 rounded-full px-4 py-2 text-sm font-600 text-white">
-                    <Icon name="Check" size={14} className="text-green-300" />
-                    {tag}
-                  </span>
-                ))}
-              </div>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        {/* Cartoon background illustration */}
+        <div
+          className="absolute inset-0 w-full h-full"
+          style={{
+            backgroundImage: `url(https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/9e0ceeed-66eb-4435-bf82-40c2d93893b1.jpg)`,
+            backgroundSize: "contain",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center bottom",
+            opacity: 0.92,
+          }}
+        />
+        {/* Sky gradient above illustration */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(180deg, #e8f5ff 0%, #f0faf0 40%, transparent 75%)",
+          }}
+        />
+        {/* Soft vignette at center so text pops */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "radial-gradient(ellipse 70% 50% at 50% 40%, rgba(255,255,255,0.55) 0%, transparent 80%)",
+          }}
+        />
 
-              {!heroSent ? (
-                <form onSubmit={handleHeroSubmit} className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-                  <h3 className="text-white font-bold text-lg mb-4">Узнайте стоимость бесплатно</h3>
-                  <div className="space-y-3">
-                    <input
-                      className="form-input bg-white/90"
-                      type="text"
-                      placeholder="Ваше имя"
-                      value={heroName}
-                      onChange={(e) => setHeroName(e.target.value)}
-                      required
-                    />
-                    <input
-                      className="form-input bg-white/90"
-                      type="tel"
-                      placeholder="+7 (___) ___-__-__"
-                      value={heroPhone}
-                      onChange={(e) => setHeroPhone(e.target.value)}
-                      required
-                    />
-                    <button type="submit" className="btn-green w-full justify-center text-base py-4">
-                      <Icon name="Calculator" size={18} />
-                      Узнать стоимость
-                    </button>
-                  </div>
-                </form>
-              ) : (
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                  <Icon name="CheckCircle" size={48} className="text-green-300 mx-auto mb-3" />
-                  <p className="text-white font-bold text-lg">Заявка принята!</p>
-                  <p className="text-green-200 text-sm mt-1">Перезвоним в течение 15 минут</p>
-                </div>
-              )}
-            </div>
-
-            <div className="hidden lg:grid grid-cols-2 gap-4">
-              <div className="space-y-4">
-                <div className="rounded-2xl overflow-hidden h-52 bg-green-700/40">
-                  <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="Строительство" className="w-full h-full object-cover mix-blend-overlay opacity-90" />
-                </div>
-                <div className="bg-white/10 rounded-2xl p-5 border border-white/15">
-                  <div className="text-3xl font-black text-white">500+</div>
-                  <div className="text-green-200 text-sm font-500">объектов сдано</div>
-                </div>
-              </div>
-              <div className="space-y-4 mt-8">
-                <div className="bg-white/10 rounded-2xl p-5 border border-white/15">
-                  <div className="text-3xl font-black text-white">10+</div>
-                  <div className="text-green-200 text-sm font-500">лет на рынке</div>
-                </div>
-                <div className="rounded-2xl overflow-hidden h-52 bg-green-700/40">
-                  <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&q=80" alt="Кровля" className="w-full h-full object-cover mix-blend-overlay opacity-90" />
-                </div>
-              </div>
-            </div>
+        {/* Content */}
+        <div className="relative z-10 flex flex-col items-center text-center px-4 pb-24">
+          <div
+            className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-bold mb-8"
+            style={{ background: "rgba(255,255,255,0.85)", color: "#2d7a3a", boxShadow: "0 2px 16px rgba(0,0,0,0.08)" }}
+          >
+            <Icon name="Star" size={15} className="text-yellow-400" />
+            Более 500 объектов сдано
           </div>
+
+          <h1
+            className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-5"
+            style={{
+              color: "#1a3a1f",
+              textShadow: "0 2px 24px rgba(255,255,255,0.9), 0 1px 0 rgba(255,255,255,0.6)",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Строительство и ремонт<br />
+            <span style={{ color: "#2d8a40" }}>под ключ</span>
+          </h1>
+
+          <p
+            className="text-lg md:text-xl max-w-xl mb-10 leading-relaxed font-medium"
+            style={{
+              color: "#2d4a30",
+              textShadow: "0 1px 12px rgba(255,255,255,0.95)",
+            }}
+          >
+            Пристройки, кровля, фундамент, реконструкция домов —<br className="hidden md:block" />
+            в Москве и Московской области. Фиксированная цена, гарантия 3 года.
+          </p>
+
+          <div className="flex flex-wrap justify-center gap-3 mb-10">
+            {["Без посредников", "Фиксированная цена", "Гарантия 3 года"].map((tag) => (
+              <span
+                key={tag}
+                className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold"
+                style={{ background: "rgba(255,255,255,0.8)", color: "#2d6b38", border: "1.5px solid rgba(45,138,64,0.2)" }}
+              >
+                <Icon name="Check" size={14} className="text-green-500" />
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          {!heroSent ? (
+            <form
+              onSubmit={handleHeroSubmit}
+              className="flex flex-col sm:flex-row gap-3 w-full max-w-md"
+            >
+              <input
+                className="form-input flex-1 text-center sm:text-left"
+                style={{ background: "rgba(255,255,255,0.92)", borderRadius: "12px", minWidth: 0 }}
+                type="tel"
+                placeholder="Ваш телефон"
+                value={heroPhone}
+                onChange={(e) => setHeroPhone(e.target.value)}
+                required
+              />
+              <button
+                type="submit"
+                className="btn-green whitespace-nowrap px-6 py-3 text-base font-bold"
+                style={{ borderRadius: "12px" }}
+              >
+                <Icon name="Calculator" size={18} />
+                Узнайте стоимость бесплатно
+              </button>
+            </form>
+          ) : (
+            <div
+              className="flex items-center gap-3 px-8 py-4 rounded-2xl"
+              style={{ background: "rgba(255,255,255,0.9)", color: "#2d7a3a" }}
+            >
+              <Icon name="CheckCircle" size={28} className="text-green-500" />
+              <div className="text-left">
+                <div className="font-bold">Заявка принята!</div>
+                <div className="text-sm text-gray-500">Перезвоним в течение 15 минут</div>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
