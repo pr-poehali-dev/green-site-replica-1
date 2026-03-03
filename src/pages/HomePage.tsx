@@ -57,6 +57,11 @@ const galleryItems = [
   { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/85f9c102-d23d-484d-9e1e-523a2277947f.jpg", title: "Строительство из газобетона" },
   { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/58972d80-7b3d-42eb-a699-b6024809a1f1.jpg", title: "Двухэтажный коттедж" },
   { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/b55a0e4c-bcf9-482c-a2aa-f563b9fe363d.jpg", title: "Забор с воротами" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/4b43290a-6195-420c-8cb8-cd7e333f0521.jpg", title: "Забор из профнастила" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/277af803-fc70-4943-ba64-542e43ab2c54.jpg", title: "Гараж с сайдингом" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/7d5aa339-c70d-4c2b-9b8b-01ac08b07e78.jpg", title: "Автоматические ворота" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/176d61cf-f6ac-4f14-8c78-bca61aa4a17f.jpg", title: "Металлокаркас" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/5c291c5e-b0e3-4849-a06d-79ae800d0d8e.jpg", title: "Плитный фундамент" },
 ];
 
 const workTypes = ["Пристройка", "Кровля", "Реконструкция", "Фундамент", "Утепление", "Отделка", "Фасад"];
