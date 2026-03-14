@@ -8,8 +8,10 @@ export default function ContactsPage() {
   const [message, setMessage] = useState("");
   const [sent, setSent] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const { sendTelegram } = await import("@/lib/sendTelegram");
+    await sendTelegram(name, phone, message ? `Сообщение: ${message}` : "Форма: контакты");
     setSent(true);
   };
 
@@ -138,8 +140,8 @@ export default function ContactsPage() {
                   <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mb-5">
                     <Icon name="CheckCircle" size={44} className="text-green-500" />
                   </div>
-                  <h3 className="text-2xl font-black text-gray-900 mb-2">Заявка принята!</h3>
-                  <p className="text-gray-500 mb-6">Мы свяжемся с вами в течение 15 минут</p>
+                  <h3 className="text-2xl font-black text-gray-900 mb-2">Спасибо!</h3>
+                  <p className="text-gray-500 mb-6">Заявка принята. Мы свяжемся с вами в ближайшее время</p>
                   <a href="tel:+79804800123" className="btn-green">
                     <Icon name="Phone" size={18} />
                     +7 980 480 0123

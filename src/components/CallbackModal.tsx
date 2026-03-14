@@ -11,8 +11,10 @@ export default function CallbackModal({ onClose }: CallbackModalProps) {
   const [phone, setPhone] = useState("");
   const [sent, setSent] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const { sendTelegram } = await import("@/lib/sendTelegram");
+    await sendTelegram(name, phone);
     setSent(true);
   };
 
@@ -75,9 +77,9 @@ export default function CallbackModal({ onClose }: CallbackModalProps) {
             <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-5">
               <Icon name="CheckCircle" size={40} className="text-green-500" />
             </div>
-            <h2 className="text-2xl font-black text-gray-900 mb-2">Заявка принята!</h2>
+            <h2 className="text-2xl font-black text-gray-900 mb-2">Спасибо!</h2>
             <p className="text-gray-500 mb-6">
-              Мы перезвоним вам в течение 15 минут
+              Заявка принята. Мы свяжемся с вами в ближайшее время
             </p>
             <a href={`tel:${PHONE}`} className="btn-green justify-center inline-flex">
               <Icon name="Phone" size={18} />

@@ -13,28 +13,28 @@ export const SERVICES = [
     icon: "Triangle",
     title: "Кровля",
     desc: "Монтаж, ремонт и замена кровли. Работаем с металлочерепицей, профнастилом, мягкой кровлей",
-    img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/97350343-eb70-4cec-9657-3435d5e5ab6e.jpg",
+    img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/c6d7c275-6bb8-478f-ad73-8ba176385e3b.jpg",
   },
   {
     id: "otmostka",
     icon: "Layers",
     title: "Отмостка",
     desc: "Устройство отмостки вокруг дома. Защита фундамента от влаги и разрушения",
-    img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/1165095b-2076-4c30-b666-a6c1ef9fad18.jpg",
+    img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/81bb592e-3c75-488b-a72f-f01611c9caec.jpg",
   },
   {
     id: "foundation",
     icon: "Building2",
     title: "Фундамент",
     desc: "Ленточный, свайный, плитный фундамент. Усиление существующих фундаментов",
-    img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/5c291c5e-b0e3-4849-a06d-79ae800d0d8e.jpg",
+    img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/fc2ae133-ad51-4fb8-9f75-e4fa309bc271.jpg",
   },
   {
     id: "extension",
     icon: "Home",
     title: "Пристройка к дому",
     desc: "Расширяем жилую площадь: веранды, террасы, пристройки к дому любой сложности",
-    img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/30e12811-5bb7-4427-8ddf-a9769a35537f.jpg",
+    img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/92b5028f-eab2-4b00-b88e-d9be310c2f07.jpg",
   },
   {
     id: "canopy",
@@ -69,7 +69,7 @@ export const SERVICES = [
     icon: "PanelRight",
     title: "Сайдинг",
     desc: "Монтаж виниловго, металлического и деревянного сайдинга. Преображаем фасад",
-    img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/277af803-fc70-4943-ba64-542e43ab2c54.jpg",
+    img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/95e71204-ef4a-4e28-bf9a-30fe92bcdb9e.jpg",
   },
   {
     id: "facade",
@@ -130,16 +130,16 @@ const reviews = [
 ];
 
 const galleryItems = [
-  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/8de3ef90-12f7-49ef-9d04-00a6939e3a52.jpg", title: "Дом из бруса" },
-  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/96415a9f-8a5b-4264-a502-b53e02a55252.jpg", title: "Деревянный дом с террасой" },
-  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/85f9c102-d23d-484d-9e1e-523a2277947f.jpg", title: "Строительство из газобетона" },
-  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/58972d80-7b3d-42eb-a699-b6024809a1f1.jpg", title: "Двухэтажный коттедж" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/c6d7c275-6bb8-478f-ad73-8ba176385e3b.jpg", title: "Монтаж металлочерепицы" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/92b5028f-eab2-4b00-b88e-d9be310c2f07.jpg", title: "Каркасная пристройка" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/95e71204-ef4a-4e28-bf9a-30fe92bcdb9e.jpg", title: "Монтаж сайдинга" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/81bb592e-3c75-488b-a72f-f01611c9caec.jpg", title: "Устройство отмостки" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/fc2ae133-ad51-4fb8-9f75-e4fa309bc271.jpg", title: "Армирование фундамента" },
   { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/b55a0e4c-bcf9-482c-a2aa-f563b9fe363d.jpg", title: "Забор с воротами" },
-  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/4b43290a-6195-420c-8cb8-cd7e333f0521.jpg", title: "Забор из профнастила" },
-  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/277af803-fc70-4943-ba64-542e43ab2c54.jpg", title: "Гараж с сайдингом" },
-  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/7d5aa339-c70d-4c2b-9b8b-01ac08b07e78.jpg", title: "Автоматические ворота" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/4b43290a-6195-420c-8cb8-cd7e333f0521.jpg", title: "Брусчатка" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/85f9c102-d23d-484d-9e1e-523a2277947f.jpg", title: "Строительство дома" },
   { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/176d61cf-f6ac-4f14-8c78-bca61aa4a17f.jpg", title: "Металлокаркас" },
-  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/5c291c5e-b0e3-4849-a06d-79ae800d0d8e.jpg", title: "Плитный фундамент" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/7d5aa339-c70d-4c2b-9b8b-01ac08b07e78.jpg", title: "Ворота" },
 ];
 
 const workTypes = SERVICES.map((s) => s.title);
@@ -165,9 +165,24 @@ export default function HomePage({ onOpenModal, onNavigateService }: HomePagePro
   const [contactPhone, setContactPhone] = useState("");
   const [contactSent, setContactSent] = useState(false);
 
-  const handleHeroSubmit = (e: React.FormEvent) => { e.preventDefault(); setHeroSent(true); };
-  const handleCalcSubmit = (e: React.FormEvent) => { e.preventDefault(); setCalcSent(true); };
-  const handleContactSubmit = (e: React.FormEvent) => { e.preventDefault(); setContactSent(true); };
+  const handleHeroSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const { sendTelegram } = await import("@/lib/sendTelegram");
+    await sendTelegram("Не указано", heroPhone, "Форма: герой (узнать стоимость)");
+    setHeroSent(true);
+  };
+  const handleCalcSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const { sendTelegram } = await import("@/lib/sendTelegram");
+    await sendTelegram(calcName, calcPhone, `Форма: калькулятор\nВид работ: ${calcData.type}\nСрок: ${calcData.deadline}`);
+    setCalcSent(true);
+  };
+  const handleContactSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const { sendTelegram } = await import("@/lib/sendTelegram");
+    await sendTelegram(contactName, contactPhone, "Форма: контактная секция");
+    setContactSent(true);
+  };
 
   return (
     <>
@@ -238,8 +253,8 @@ export default function HomePage({ onOpenModal, onNavigateService }: HomePagePro
             <div className="flex items-center gap-3 px-8 py-4 rounded-2xl" style={{ background: "rgba(255,255,255,0.9)", color: "#2d7a3a" }}>
               <Icon name="CheckCircle" size={28} className="text-green-500" />
               <div className="text-left">
-                <div className="font-bold">Заявка принята!</div>
-                <div className="text-sm text-gray-500">Перезвоним в течение 15 минут</div>
+                <div className="font-bold">Спасибо! Заявка принята.</div>
+                <div className="text-sm text-gray-500">Мы свяжемся с вами в ближайшее время</div>
               </div>
             </div>
           )}
@@ -396,8 +411,8 @@ export default function HomePage({ onOpenModal, onNavigateService }: HomePagePro
               {calcSent && (
                 <div className="text-center py-8">
                   <Icon name="CheckCircle" size={52} className="text-green-500 mx-auto mb-4" />
-                  <h3 className="text-xl font-black text-gray-900 mb-2">Заявка принята!</h3>
-                  <p className="text-gray-500">Перезвоним в течение 15 минут и пришлём расчёт</p>
+                  <h3 className="text-xl font-black text-gray-900 mb-2">Спасибо!</h3>
+                  <p className="text-gray-500">Заявка принята. Мы свяжемся с вами в ближайшее время</p>
                 </div>
               )}
             </div>
@@ -576,8 +591,8 @@ export default function HomePage({ onOpenModal, onNavigateService }: HomePagePro
               ) : (
                 <div className="bg-white rounded-2xl p-8 shadow-2xl text-center">
                   <Icon name="CheckCircle" size={52} className="text-green-500 mx-auto mb-4" />
-                  <h3 className="text-xl font-black text-gray-900 mb-2">Заявка принята!</h3>
-                  <p className="text-gray-500">Перезвоним вам в течение 15 минут</p>
+                  <h3 className="text-xl font-black text-gray-900 mb-2">Спасибо!</h3>
+                  <p className="text-gray-500">Заявка принята. Мы свяжемся с вами в ближайшее время</p>
                 </div>
               )}
             </SectionReveal>

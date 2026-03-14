@@ -7,19 +7,19 @@ interface WorksPageProps {
 }
 
 const works = [
-  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/8de3ef90-12f7-49ef-9d04-00a6939e3a52.jpg", title: "Дом из бруса", desc: "Двухэтажный дом из бруса 90 м² под ключ", category: "Строительство", year: "2024" },
-  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/96415a9f-8a5b-4264-a502-b53e02a55252.jpg", title: "Деревянный дом с террасой", desc: "Дом из бруса с открытой террасой и гаражом", category: "Строительство", year: "2024" },
-  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/85f9c102-d23d-484d-9e1e-523a2277947f.jpg", title: "Коттедж из газобетона", desc: "Строительство коттеджа 160 м² из газобетона", category: "Строительство", year: "2025" },
-  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/58972d80-7b3d-42eb-a699-b6024809a1f1.jpg", title: "Двухэтажный коттедж", desc: "Двухэтажный коттедж из газобетона 200 м²", category: "Строительство", year: "2025" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/c6d7c275-6bb8-478f-ad73-8ba176385e3b.jpg", title: "Монтаж металлочерепицы", desc: "Укладка металлочерепицы с утеплением и гидроизоляцией", category: "Кровля", year: "2025" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/92b5028f-eab2-4b00-b88e-d9be310c2f07.jpg", title: "Каркасная пристройка", desc: "Каркасная пристройка к дому на свайном фундаменте", category: "Пристройки", year: "2025" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/95e71204-ef4a-4e28-bf9a-30fe92bcdb9e.jpg", title: "Монтаж сайдинга", desc: "Облицовка фасада виниловым сайдингом с утеплением", category: "Сайдинг", year: "2025" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/81bb592e-3c75-488b-a72f-f01611c9caec.jpg", title: "Отмостка по периметру", desc: "Бетонная отмостка с гидроизоляцией и дренажом", category: "Фундамент", year: "2025" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/fc2ae133-ad51-4fb8-9f75-e4fa309bc271.jpg", title: "Армирование плиты", desc: "Монолитная плита с двойным армированием 200 м²", category: "Фундамент", year: "2025" },
   { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/b55a0e4c-bcf9-482c-a2aa-f563b9fe363d.jpg", title: "Забор с воротами", desc: "Металлический забор с кирпичными столбами и воротами", category: "Заборы", year: "2024" },
+  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/85f9c102-d23d-484d-9e1e-523a2277947f.jpg", title: "Коттедж из газобетона", desc: "Строительство коттеджа 160 м² из газобетона", category: "Строительство", year: "2025" },
   { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/4b43290a-6195-420c-8cb8-cd7e333f0521.jpg", title: "Забор из профнастила", desc: "Забор из профнастила на металлических столбах 60 м.п.", category: "Заборы", year: "2024" },
-  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/277af803-fc70-4943-ba64-542e43ab2c54.jpg", title: "Гараж с сайдингом", desc: "Строительство гаража 36 м² с отделкой фасада сайдингом", category: "Строительство", year: "2024" },
   { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/7d5aa339-c70d-4c2b-9b8b-01ac08b07e78.jpg", title: "Автоматические ворота", desc: "Распашные ворота с автоматикой и кирпичными столбами", category: "Заборы", year: "2025" },
   { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/176d61cf-f6ac-4f14-8c78-bca61aa4a17f.jpg", title: "Металлокаркас", desc: "Металлический каркас под строение 60 м²", category: "Строительство", year: "2024" },
-  { img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/5c291c5e-b0e3-4849-a06d-79ae800d0d8e.jpg", title: "Плитный фундамент", desc: "Монолитная плита с утеплением и гидроизоляцией", category: "Фундамент", year: "2025" },
 ];
 
-const categories = ["Все", "Строительство", "Заборы", "Фундамент"];
+const categories = ["Все", "Кровля", "Пристройки", "Сайдинг", "Фундамент", "Заборы", "Строительство"];
 
 export default function WorksPage({ onOpenModal }: WorksPageProps) {
   const [filter, setFilter] = useState("Все");
