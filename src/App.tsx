@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
+import ServicePage from "./pages/ServicePage";
 import ServicesPage from "./pages/ServicesPage";
 import WorksPage from "./pages/WorksPage";
 import AboutPage from "./pages/AboutPage";
@@ -13,6 +14,7 @@ import CallbackModal from "./components/CallbackModal";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
+  const [currentServiceId, setCurrentServiceId] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -22,17 +24,39 @@ export default function App() {
 
   const navigate = (page: string) => {
     setCurrentPage(page);
+    setCurrentServiceId(null);
     window.location.hash = page;
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const navigateService = (serviceId: string) => {
+    setCurrentServiceId(serviceId);
+    setCurrentPage("service");
+    window.location.hash = `service-${serviceId}`;
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const renderPage = () => {
+    if (currentPage === "service" && currentServiceId) {
+      return (
+        <ServicePage
+          serviceId={currentServiceId}
+          onOpenModal={() => setIsModalOpen(true)}
+          onBack={() => navigate("home")}
+        />
+      );
+    }
     switch (currentPage) {
       case "services": return <ServicesPage onOpenModal={() => setIsModalOpen(true)} />;
       case "works": return <WorksPage onOpenModal={() => setIsModalOpen(true)} />;
       case "about": return <AboutPage onOpenModal={() => setIsModalOpen(true)} />;
       case "contacts": return <ContactsPage />;
-      default: return <HomePage onOpenModal={() => setIsModalOpen(true)} />;
+      default: return (
+        <HomePage
+          onOpenModal={() => setIsModalOpen(true)}
+          onNavigateService={navigateService}
+        />
+      );
     }
   };
 

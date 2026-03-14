@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Icon from "@/components/ui/icon";
+import { PHONE, PHONE_DISPLAY, WA_LINK, TG_LINK, MAX_LINK } from "@/pages/HomePage";
 
 interface HeaderProps {
   currentPage: string;
@@ -54,13 +55,22 @@ export default function Header({ currentPage, navigate, onOpenModal }: HeaderPro
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-2">
+          <a href={WA_LINK} target="_blank" rel="noopener noreferrer" title="WhatsApp" className="w-9 h-9 rounded-full bg-[#25D366] flex items-center justify-center hover:opacity-90 transition-opacity">
+            <Icon name="MessageCircle" size={18} className="text-white" />
+          </a>
+          <a href={TG_LINK} target="_blank" rel="noopener noreferrer" title="Telegram" className="w-9 h-9 rounded-full bg-[#2AABEE] flex items-center justify-center hover:opacity-90 transition-opacity">
+            <Icon name="Send" size={16} className="text-white" />
+          </a>
+          <a href={MAX_LINK} target="_blank" rel="noopener noreferrer" title="Max" className="w-9 h-9 rounded-full bg-[#0077FF] flex items-center justify-center hover:opacity-90 transition-opacity">
+            <Icon name="AtSign" size={16} className="text-white" />
+          </a>
           <a
-            href="tel:+79804800123"
-            className="flex items-center gap-2 text-gray-800 font-bold text-base hover:text-green-600 transition-colors"
+            href={`tel:${PHONE}`}
+            className="flex items-center gap-2 text-gray-800 font-bold text-base hover:text-green-600 transition-colors ml-1"
           >
             <Icon name="Phone" size={18} className="text-green-500" />
-            +7 980 480 0123
+            {PHONE_DISPLAY}
           </a>
           <button onClick={onOpenModal} className="btn-green text-sm px-5 py-3">
             Заказать звонок
@@ -92,9 +102,20 @@ export default function Header({ currentPage, navigate, onOpenModal }: HeaderPro
               </button>
             ))}
             <div className="flex items-center gap-3 pt-3 border-t border-gray-100">
-              <a href="tel:+79804800123" className="flex items-center gap-2 text-gray-800 font-bold">
+              <a href={`tel:${PHONE}`} className="flex items-center gap-2 text-gray-800 font-bold">
                 <Icon name="Phone" size={18} className="text-green-500" />
-                +7 980 480 0123
+                {PHONE_DISPLAY}
+              </a>
+            </div>
+            <div className="flex gap-2 pt-1">
+              <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#25D366] text-white text-sm font-bold">
+                <Icon name="MessageCircle" size={16} /> WhatsApp
+              </a>
+              <a href={TG_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#2AABEE] text-white text-sm font-bold">
+                <Icon name="Send" size={16} /> Telegram
+              </a>
+              <a href={MAX_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#0077FF] text-white text-sm font-bold">
+                <Icon name="AtSign" size={16} /> Max
               </a>
             </div>
             <button onClick={() => { onOpenModal(); setMenuOpen(false); }} className="btn-green mt-2 justify-center">

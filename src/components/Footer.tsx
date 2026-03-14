@@ -1,4 +1,5 @@
 import Icon from "@/components/ui/icon";
+import { PHONE, PHONE_DISPLAY, WA_LINK, TG_LINK, MAX_LINK } from "@/pages/HomePage";
 
 interface FooterProps {
   navigate: (page: string) => void;
@@ -44,15 +45,26 @@ export default function Footer({ navigate }: FooterProps) {
             <h4 className="font-bold text-lg mb-4 text-green-300">Контакты</h4>
             <div className="space-y-3">
               <a
-                href="tel:+79804800123"
+                href={`tel:${PHONE}`}
                 className="flex items-center gap-2 text-green-200 hover:text-white transition-colors"
               >
                 <Icon name="Phone" size={16} />
-                <span className="font-bold">+7 980 480 0123</span>
+                <span className="font-bold">{PHONE_DISPLAY}</span>
               </a>
+              <div className="flex flex-wrap gap-2">
+                <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#25D366] text-white text-xs font-bold hover:opacity-90 transition-opacity">
+                  <Icon name="MessageCircle" size={13} /> WhatsApp
+                </a>
+                <a href={TG_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#2AABEE] text-white text-xs font-bold hover:opacity-90 transition-opacity">
+                  <Icon name="Send" size={13} /> Telegram
+                </a>
+                <a href={MAX_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#0077FF] text-white text-xs font-bold hover:opacity-90 transition-opacity">
+                  <Icon name="AtSign" size={13} /> Max
+                </a>
+              </div>
               <div className="flex items-center gap-2 text-green-200">
                 <Icon name="Clock" size={16} />
-                <span className="text-sm">Пн–Вс: 8:00 – 20:00</span>
+                <span className="text-sm">Круглосуточно</span>
               </div>
               <div className="flex items-center gap-2 text-green-200">
                 <Icon name="MapPin" size={16} />

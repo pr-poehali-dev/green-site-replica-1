@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
+import { PHONE, PHONE_DISPLAY } from "@/pages/HomePage";
 
 interface CallbackModalProps {
   onClose: () => void;
@@ -78,9 +79,9 @@ export default function CallbackModal({ onClose }: CallbackModalProps) {
             <p className="text-gray-500 mb-6">
               Мы перезвоним вам в течение 15 минут
             </p>
-            <a href="tel:+79804800123" className="btn-green justify-center inline-flex">
+            <a href={`tel:${PHONE}`} className="btn-green justify-center inline-flex">
               <Icon name="Phone" size={18} />
-              +7 980 480 0123
+              {PHONE_DISPLAY}
             </a>
           </div>
         )}
