@@ -36,7 +36,7 @@ export default function Header({ currentPage, navigate, onOpenModal }: HeaderPro
           onClick={() => navigate("home")}
           className="text-xl font-black text-green-700 tracking-tight hover:text-green-600 transition-colors"
         >
-          <span className="text-green-500">Строй</span>Двор
+          <span className="text-green-500">Строй-</span>Ремонт 🔨
         </button>
 
         <nav className="hidden md:flex items-center gap-1">
