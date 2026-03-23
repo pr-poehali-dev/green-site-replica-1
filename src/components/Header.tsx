@@ -62,8 +62,8 @@ export default function Header({ currentPage, navigate, onOpenModal }: HeaderPro
           <a href={TG_LINK} target="_blank" rel="noopener noreferrer" title="Telegram" className="w-9 h-9 rounded-full bg-[#2AABEE] flex items-center justify-center hover:opacity-90 transition-opacity">
             <Icon name="Send" size={16} className="text-white" />
           </a>
-          <a href={MAX_LINK} target="_blank" rel="noopener noreferrer" title="Max" className="w-9 h-9 rounded-full bg-[#0077FF] flex items-center justify-center hover:opacity-90 transition-opacity">
-            <Icon name="AtSign" size={16} className="text-white" />
+          <a href={MAX_LINK} target="_blank" rel="noopener noreferrer" title="Max" className="w-9 h-9 rounded-full overflow-hidden flex items-center justify-center hover:opacity-90 transition-opacity bg-[#0077FF]">
+            <img src="https://max.ru/favicon.ico" alt="Max" className="w-5 h-5 object-contain" onError={(e) => { const t = e.target as HTMLImageElement; t.style.display='none'; const s = document.createElement('span'); s.style.cssText='color:white;font-weight:900;font-size:15px;font-family:sans-serif'; s.textContent='M'; t.parentElement?.appendChild(s); }} />
           </a>
           <a
             href={`tel:${PHONE}`}
@@ -115,7 +115,7 @@ export default function Header({ currentPage, navigate, onOpenModal }: HeaderPro
                 <Icon name="Send" size={16} /> Telegram
               </a>
               <a href={MAX_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#0077FF] text-white text-sm font-bold">
-                <Icon name="AtSign" size={16} /> Max
+                <img src="https://max.ru/favicon.ico" alt="Max" className="w-4 h-4 object-contain" /> Max
               </a>
             </div>
             <button onClick={() => { onOpenModal(); setMenuOpen(false); }} className="btn-green mt-2 justify-center">

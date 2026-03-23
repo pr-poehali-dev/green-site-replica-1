@@ -41,14 +41,14 @@ export const SERVICES = [
     icon: "Umbrella",
     title: "Навес",
     desc: "Навесы для автомобилей, террас, входных групп. Металл, поликарбонат, дерево",
-    img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/8de3ef90-12f7-49ef-9d04-00a6939e3a52.jpg",
+    img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/4f34ca5b-eeeb-4174-b48c-7df3d34c476e.jpg",
   },
   {
     id: "paving",
     icon: "LayoutGrid",
     title: "Брусчатка / тротуарная плитка",
     desc: "Укладка тротуарной плитки, брусчатки, бордюров. Дорожки, площадки, парковки",
-    img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/4b43290a-6195-420c-8cb8-cd7e333f0521.jpg",
+    img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/d65eb0fe-ff5e-463d-a6a4-4d457fca3113.jpg",
   },
   {
     id: "newhouse",
@@ -83,14 +83,14 @@ export const SERVICES = [
     icon: "RotateCcw",
     title: "Замена венцов",
     desc: "Замена нижних и верхних венцов деревянных домов. Опыт работ с брусом и бревном",
-    img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/e695140e-e500-4a6f-8d72-b7f138c67732.jpg",
+    img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/e66d0632-6eb0-4d57-91c8-d12e14c62ee0.jpg",
   },
   {
     id: "floor",
     icon: "Rows3",
     title: "Ремонт полов / лаги",
     desc: "Замена лаг, настил досок, выравнивание пола. Скрипящий пол — устраним",
-    img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/58972d80-7b3d-42eb-a699-b6024809a1f1.jpg",
+    img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/f6d208d2-7ce8-4096-be5a-7825278d0be3.jpg",
   },
   {
     id: "roof-repair",
@@ -104,7 +104,7 @@ export const SERVICES = [
     icon: "Flame",
     title: "Дымоход",
     desc: "Строительство, ремонт и чистка дымоходов. Кирпич, сэндвич-трубы, вкладыши",
-    img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/176d61cf-f6ac-4f14-8c78-bca61aa4a17f.jpg",
+    img: "https://cdn.poehali.dev/projects/c06aca1c-4097-48a0-b820-bb2ca662b220/bucket/c6ae5f63-ffbc-4a97-a434-fb11d422f5a8.jpg",
   },
   {
     id: "other",
@@ -537,7 +537,7 @@ export default function HomePage({ onOpenModal, onNavigateService }: HomePagePro
                           <Icon name="Send" size={16} /> Telegram
                         </a>
                         <a href={MAX_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#0077FF] text-white text-sm font-bold hover:opacity-90 transition-opacity">
-                          <Icon name="AtSign" size={16} /> Max
+                          <img src="https://max.ru/favicon.ico" alt="Max" className="w-4 h-4 object-contain" /> Max
                         </a>
                       </div>
                     </div>

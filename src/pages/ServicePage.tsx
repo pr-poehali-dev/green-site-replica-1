@@ -128,7 +128,7 @@ export default function ServicePage({ serviceId, onOpenModal, onBack }: ServiceP
                           <Icon name="Send" size={16} /> Telegram
                         </a>
                         <a href={MAX_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#0077FF] text-white text-sm font-bold hover:opacity-90 transition-opacity">
-                          <Icon name="AtSign" size={16} /> Max
+                          <img src="https://max.ru/favicon.ico" alt="Max" className="w-4 h-4 object-contain" /> Max
                         </a>
                       </div>
                     </div>
