@@ -11,6 +11,7 @@ interface HeaderProps {
 const navItems = [
   { key: "services", label: "Услуги" },
   { key: "works", label: "Наши работы" },
+  { key: "reviews", label: "Отзывы" },
   { key: "about", label: "О нас" },
   { key: "contacts", label: "Контакты" },
 ];

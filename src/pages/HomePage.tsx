@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Icon from "@/components/ui/icon";
 import SectionReveal from "@/components/SectionReveal";
 
@@ -123,10 +123,15 @@ const advantages = [
 ];
 
 const reviews = [
-  { name: "Андрей Колесников", text: "Заказывали пристройку к частному дому. Ребята сделали всё чисто и в срок. Смета не изменилась ни на копейку. Рекомендую!", rating: 5, work: "Пристройка" },
-  { name: "Марина Светлова", text: "Меняли кровлю на даче. Приятно удивила скорость работы и чистота на объекте. Через неделю всё было готово.", rating: 5, work: "Кровля" },
-  { name: "Виктор Захаров", text: "Делали фундамент под гараж. Качество отличное, всё по технологии. Дали гарантию на 3 года. Буду обращаться ещё.", rating: 5, work: "Фундамент" },
-  { name: "Ольга Панова", text: "Утепляли дом снаружи. Мастера вежливые, аккуратные. Результат превзошёл ожидания — в доме стало намного теплее.", rating: 5, work: "Утепление" },
+  { name: "Андрей Колесников", city: "Москва", text: "Заказывали пристройку к частному дому. Ребята сделали всё чисто и в срок. Смета не изменилась ни на копейку. Рекомендую!", rating: 5, work: "Пристройка" },
+  { name: "Марина Светлова", city: "Подольск", text: "Меняли кровлю на даче. Приятно удивила скорость работы и чистота на объекте. Через неделю всё было готово.", rating: 5, work: "Кровля" },
+  { name: "Виктор Захаров", city: "Домодедово", text: "Делали фундамент под гараж. Качество отличное, всё по технологии. Дали гарантию на 3 года. Буду обращаться ещё.", rating: 5, work: "Фундамент" },
+  { name: "Ольга Панова", city: "Химки", text: "Утепляли дом снаружи. Мастера вежливые, аккуратные. Результат превзошёл ожидания — в доме стало намного теплее.", rating: 5, work: "Утепление" },
+  { name: "Сергей Громов", city: "Балашиха", text: "Построили забор и установили ворота. Работали быстро, материалы качественные. Соседи уже спрашивают контакты!", rating: 5, work: "Забор" },
+  { name: "Татьяна Мещерякова", city: "Красногорск", text: "Заказывала отмостку вокруг дома. Сделали за 2 дня, очень аккуратно. Никакого мусора после работы — всё убрали.", rating: 5, work: "Отмостка" },
+  { name: "Дмитрий Нефёдов", city: "Люберцы", text: "Делали реконструкцию старой дачи. Результат отличный — дом как новый. Цена осталась как в смете, без скрытых доплат.", rating: 5, work: "Реконструкция" },
+  { name: "Екатерина Власова", city: "Одинцово", text: "Устанавливали сайдинг на фасад. Всё чётко по плану, мастера вежливые и профессиональные. Очень довольна результатом!", rating: 5, work: "Фасад" },
+  { name: "Алексей Борисов", city: "Щёлково", text: "Клали брусчатку во дворе. Работа выполнена идеально — ровно, красиво. Теперь двор просто загляденье!", rating: 5, work: "Благоустройство" },
 ];
 
 const galleryItems = [
@@ -151,10 +156,146 @@ export const WA_LINK = `https://wa.me/79804800123`;
 export const TG_LINK = `https://t.me/+79804800123`;
 export const MAX_LINK = `https://max.ru/+79804800123`;
 
+function ReviewsCarousel() {
+  const [current, setCurrent] = useState(0);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef(0);
+
+  const visibleCount = 3;
+  const total = reviews.length;
+
+  const next = useCallback(() => setCurrent((c) => (c + 1) % total), [total]);
+  const prev = useCallback(() => setCurrent((c) => (c - 1 + total) % total), [total]);
+
+  const resetTimer = useCallback(() => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(next, 6000);
+  }, [next]);
+
+  useEffect(() => {
+    resetTimer();
+    return () => { if (timerRef.current) clearInterval(timerRef.current); };
+  }, [resetTimer]);
+
+  const handlePrev = () => { prev(); resetTimer(); };
+  const handleNext = () => { next(); resetTimer(); };
+  const handleDot = (i: number) => { setCurrent(i); resetTimer(); };
+
+  const onTouchStart = (e: React.TouchEvent) => { touchStartX.current = e.touches[0].clientX; };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) { handleNext(); } else { handlePrev(); }
+    }
+  };
+
+  const getSlides = () => {
+    const slides = [];
+    for (let i = 0; i < visibleCount; i++) {
+      slides.push(reviews[(current + i) % total]);
+    }
+    return slides;
+  };
+
+  return (
+    <section className="py-16 md:py-24 bg-gray-50" id="reviews">
+      <div className="container mx-auto px-4">
+        <SectionReveal>
+          <div className="text-center mb-12">
+            <span className="inline-block text-green-600 font-bold text-sm uppercase tracking-widest mb-3 bg-green-100 px-4 py-1 rounded-full">Отзывы</span>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-3">Отзывы наших клиентов</h2>
+            <p className="text-gray-500 max-w-xl mx-auto">Более 500 довольных заказчиков за 10 лет работы</p>
+          </div>
+        </SectionReveal>
+
+        <div className="relative">
+          <button
+            onClick={handlePrev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-green-600 hover:bg-green-50 transition-all hidden md:flex"
+            aria-label="Назад"
+          >
+            <Icon name="ChevronLeft" size={22} />
+          </button>
+
+          <div
+            ref={trackRef}
+            className="grid grid-cols-1 md:grid-cols-3 gap-5 overflow-hidden"
+            onTouchStart={onTouchStart}
+            onTouchEnd={onTouchEnd}
+          >
+            {getSlides().map((rev, i) => (
+              <div
+                key={`${current}-${i}`}
+                className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col transition-all duration-300"
+                style={{ animation: "fadeInUp 0.4s ease both", animationDelay: `${i * 60}ms` }}
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex gap-0.5">
+                    {[...Array(rev.rating)].map((_, j) => (
+                      <span key={j} className="text-yellow-400 text-lg">★</span>
+                    ))}
+                  </div>
+                  <span className="text-xs text-green-700 font-bold bg-green-100 px-3 py-1 rounded-full">{rev.work}</span>
+                </div>
+                <p className="text-gray-600 text-sm leading-relaxed flex-1 mb-5 italic">«{rev.text}»</p>
+                <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
+                  <div className="w-11 h-11 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-white font-black text-lg flex-shrink-0">
+                    {rev.name[0]}
+                  </div>
+                  <div>
+                    <p className="font-bold text-gray-900 text-sm leading-tight">{rev.name}</p>
+                    <p className="text-gray-400 text-xs flex items-center gap-1 mt-0.5">
+                      <Icon name="MapPin" size={11} />
+                      {rev.city}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <button
+            onClick={handleNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-green-600 hover:bg-green-50 transition-all hidden md:flex"
+            aria-label="Вперёд"
+          >
+            <Icon name="ChevronRight" size={22} />
+          </button>
+        </div>
+
+        <div className="flex justify-center items-center gap-4 mt-8">
+          <button onClick={handlePrev} className="md:hidden w-10 h-10 rounded-full bg-white shadow border border-gray-100 flex items-center justify-center text-green-600">
+            <Icon name="ChevronLeft" size={18} />
+          </button>
+          <div className="flex gap-2">
+            {reviews.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => handleDot(i)}
+                className={`rounded-full transition-all duration-300 ${i === current ? "w-7 h-3 bg-green-500" : "w-3 h-3 bg-gray-200 hover:bg-green-300"}`}
+              />
+            ))}
+          </div>
+          <button onClick={handleNext} className="md:hidden w-10 h-10 rounded-full bg-white shadow border border-gray-100 flex items-center justify-center text-green-600">
+            <Icon name="ChevronRight" size={18} />
+          </button>
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(16px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
+    </section>
+  );
+}
+
 export default function HomePage({ onOpenModal, onNavigateService }: HomePageProps) {
   const [heroPhone, setHeroPhone] = useState("");
   const [heroSent, setHeroSent] = useState(false);
-  const [reviewIdx, setReviewIdx] = useState(0);
   const [lightbox, setLightbox] = useState<null | { img: string; title: string }>(null);
   const [calcStep, setCalcStep] = useState(1);
   const [calcData, setCalcData] = useState({ type: "", deadline: "" });
@@ -462,57 +603,7 @@ export default function HomePage({ onOpenModal, onNavigateService }: HomePagePro
       </section>
 
       {/* REVIEWS */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container mx-auto px-4">
-          <SectionReveal>
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-3">Отзывы клиентов</h2>
-              <p className="text-gray-500 max-w-xl mx-auto">Более 500 довольных заказчиков за 10 лет работы</p>
-            </div>
-          </SectionReveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            {reviews.slice(reviewIdx, reviewIdx + 2).map((rev, i) => (
-              <SectionReveal key={i} delay={i * 100}>
-                <div className="review-card">
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="flex gap-1">
-                      {[...Array(rev.rating)].map((_, j) => (
-                        <Icon key={j} name="Star" size={16} className="text-yellow-400 fill-yellow-400" />
-                      ))}
-                    </div>
-                    <span className="text-xs text-green-600 font-700 bg-green-50 px-3 py-1 rounded-full">{rev.work}</span>
-                  </div>
-                  <p className="text-gray-700 text-sm leading-relaxed mb-4">"{rev.text}"</p>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-700 font-black">
-                      {rev.name[0]}
-                    </div>
-                    <span className="font-bold text-gray-800 text-sm">{rev.name}</span>
-                  </div>
-                </div>
-              </SectionReveal>
-            ))}
-          </div>
-
-          <div className="flex justify-center gap-3">
-            <button
-              onClick={() => setReviewIdx(Math.max(0, reviewIdx - 2))}
-              disabled={reviewIdx === 0}
-              className="w-11 h-11 rounded-full border-2 border-green-200 flex items-center justify-center text-green-600 hover:bg-green-50 disabled:opacity-30 transition-all"
-            >
-              <Icon name="ChevronLeft" size={20} />
-            </button>
-            <button
-              onClick={() => setReviewIdx(Math.min(reviews.length - 2, reviewIdx + 2))}
-              disabled={reviewIdx >= reviews.length - 2}
-              className="w-11 h-11 rounded-full border-2 border-green-200 flex items-center justify-center text-green-600 hover:bg-green-50 disabled:opacity-30 transition-all"
-            >
-              <Icon name="ChevronRight" size={20} />
-            </button>
-          </div>
-        </div>
-      </section>
+      <ReviewsCarousel />
 
       {/* CONTACTS */}
       <section className="py-16 md:py-24 green-gradient-bg" id="contacts">

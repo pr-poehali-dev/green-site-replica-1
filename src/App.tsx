@@ -23,6 +23,16 @@ export default function App() {
   }, []);
 
   const navigate = (page: string) => {
+    if (page === "reviews") {
+      setCurrentPage("home");
+      setCurrentServiceId(null);
+      window.location.hash = "home";
+      setTimeout(() => {
+        const el = document.getElementById("reviews");
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 50);
+      return;
+    }
     setCurrentPage(page);
     setCurrentServiceId(null);
     window.location.hash = page;
