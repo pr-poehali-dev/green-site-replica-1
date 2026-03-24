@@ -212,6 +212,20 @@ export default function HomePage({ onOpenModal, onNavigateService }: HomePagePro
             <span style={{ color: "#6ee87a" }}>под ключ</span>
           </h1>
 
+          <a
+            href={`tel:${PHONE}`}
+            className="inline-flex items-center gap-3 mb-8 px-8 py-4 rounded-2xl font-black text-3xl md:text-4xl tracking-wide transition-transform hover:scale-105 active:scale-95"
+            style={{
+              background: "linear-gradient(135deg, #6ee87a 0%, #22c55e 100%)",
+              color: "#14532d",
+              boxShadow: "0 0 40px rgba(110,232,122,0.55), 0 4px 24px rgba(0,0,0,0.25)",
+              textShadow: "none",
+            }}
+          >
+            <Icon name="Phone" size={32} />
+            {PHONE_DISPLAY}
+          </a>
+
           <p
             className="text-lg md:text-xl max-w-xl mb-8 leading-relaxed font-medium"
             style={{ color: "rgba(255,255,255,0.88)", textShadow: "0 1px 8px rgba(0,0,0,0.4)" }}
