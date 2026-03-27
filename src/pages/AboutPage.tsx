@@ -1,5 +1,6 @@
 import Icon from "@/components/ui/icon";
 import SectionReveal from "@/components/SectionReveal";
+import { PHONE } from "@/pages/HomePage";
 
 interface AboutPageProps {
   onOpenModal: () => void;
@@ -158,6 +159,64 @@ export default function AboutPage({ onOpenModal }: AboutPageProps) {
               </SectionReveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* DISCOUNTS — кремовый */}
+      <section style={{ background: "#f5f0e8" }} className="py-20">
+        <div className="container mx-auto px-4">
+          <SectionReveal>
+            <p className="text-xs uppercase tracking-[0.25em] mb-3" style={{ color: "#8a7a5a", fontFamily: "'Manrope', sans-serif" }}>
+              социальная поддержка
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-5" style={{ color: "#1a1a1a" }}>
+              Скидки для льготных категорий
+            </h2>
+            <p className="text-base mb-14" style={{ color: "#6a5a3a", fontFamily: "'Manrope', sans-serif", maxWidth: 540 }}>
+              Мы ценим каждого клиента и предоставляем специальные условия для тех, кто нуждается в поддержке. Размер скидки уточняйте по телефону — рассматриваем каждый случай индивидуально.
+            </p>
+          </SectionReveal>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {[
+              { icon: "UserCheck", title: "Пенсионеры", desc: "Скидка для граждан пенсионного возраста" },
+              { icon: "Heart", title: "Инвалиды и ветераны", desc: "Скидка для инвалидов и ветеранов всех категорий" },
+              { icon: "Shield", title: "Семьи участников СВО", desc: "Особые условия для семей участников специальной военной операции" },
+              { icon: "Users", title: "Многодетные семьи", desc: "Скидка для семей с тремя и более детьми" },
+            ].map((item, i) => (
+              <SectionReveal key={i} delay={i * 80}>
+                <div
+                  className="p-6 rounded-sm group transition-colors duration-300"
+                  style={{ background: "#e8e0d0" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "#1a2a1a")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "#e8e0d0")}
+                >
+                  <Icon name={item.icon} size={24} className="mb-4 transition-colors duration-300" style={{ color: "#6db87a" }} />
+                  <h3 className="font-bold text-sm mb-2 transition-colors duration-300 group-hover:text-white" style={{ color: "#1a1a1a", fontFamily: "'Manrope', sans-serif" }}>
+                    {item.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed transition-colors duration-300 group-hover:text-gray-400" style={{ color: "#6a5a3a", fontFamily: "'Manrope', sans-serif" }}>
+                    {item.desc}
+                  </p>
+                </div>
+              </SectionReveal>
+            ))}
+          </div>
+          <SectionReveal>
+            <a
+              href={`tel:${PHONE}`}
+              className="inline-flex items-center gap-3 px-8 py-4 font-bold text-sm tracking-wide transition-all duration-300 hover:gap-5"
+              style={{
+                background: "#1a1a1a",
+                color: "#f5f0e8",
+                borderRadius: "4px",
+                fontFamily: "'Manrope', sans-serif",
+                letterSpacing: "0.05em",
+              }}
+            >
+              <Icon name="Phone" size={16} />
+              Позвонить и уточнить скидку
+            </a>
+          </SectionReveal>
         </div>
       </section>
 
