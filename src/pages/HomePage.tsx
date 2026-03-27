@@ -605,6 +605,53 @@ export default function HomePage({ onOpenModal, onNavigateService }: HomePagePro
       {/* REVIEWS */}
       <ReviewsCarousel />
 
+      {/* DISCOUNTS */}
+      <section className="py-16 md:py-24 bg-white" id="discounts">
+        <div className="container mx-auto px-4">
+          <SectionReveal>
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
+                <Icon name="Tag" size={16} /> Скидки и социальная поддержка
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-3">Помогаем тем, кто нуждается в поддержке</h2>
+              <p className="text-gray-500 max-w-xl mx-auto">Мы ценим каждого клиента и предоставляем специальные условия для льготных категорий граждан</p>
+            </div>
+          </SectionReveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mb-12">
+            {[
+              { icon: "UserCheck", title: "Пенсионеры", desc: "Скидка для граждан пенсионного возраста" },
+              { icon: "Heart", title: "Инвалиды и ветераны", desc: "Скидка для инвалидов и ветеранов всех категорий" },
+              { icon: "Shield", title: "Семьи участников СВО", desc: "Особые условия для семей участников специальной военной операции" },
+              { icon: "Users", title: "Многодетные семьи", desc: "Скидка для семей с тремя и более детьми" },
+            ].map((item, i) => (
+              <SectionReveal key={i} delay={i * 100}>
+                <div className="flex flex-col items-center text-center p-6 rounded-2xl border-2 border-green-100 hover:border-green-400 transition-colors group">
+                  <div className="w-16 h-16 rounded-2xl bg-green-100 group-hover:bg-green-500 flex items-center justify-center mb-4 transition-colors">
+                    <Icon name={item.icon} size={28} className="text-green-600 group-hover:text-white transition-colors" />
+                  </div>
+                  <h3 className="text-lg font-black text-gray-900 mb-2">{item.title}</h3>
+                  <p className="text-gray-500 text-sm">{item.desc}</p>
+                </div>
+              </SectionReveal>
+            ))}
+          </div>
+
+          <SectionReveal>
+            <div className="flex flex-col items-center gap-4">
+              <p className="text-gray-500 text-sm">Уточните размер скидки по телефону — рассмотрим каждый случай индивидуально</p>
+              <a
+                href={`tel:${PHONE}`}
+                className="btn-green inline-flex"
+              >
+                <Icon name="Phone" size={18} />
+                Позвонить и уточнить скидку
+              </a>
+            </div>
+          </SectionReveal>
+        </div>
+      </section>
+
       {/* CONTACTS */}
       <section className="py-16 md:py-24 green-gradient-bg" id="contacts">
         <div className="container mx-auto px-4">
