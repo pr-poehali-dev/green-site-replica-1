@@ -10,7 +10,9 @@ import ServicesPage from "./pages/ServicesPage";
 import WorksPage from "./pages/WorksPage";
 import AboutPage from "./pages/AboutPage";
 import ContactsPage from "./pages/ContactsPage";
+import PrivacyPage from "./pages/PrivacyPage";
 import CallbackModal from "./components/CallbackModal";
+import CookieBanner from "./components/CookieBanner";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -18,8 +20,15 @@ export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    const hash = window.location.hash.replace("#", "") || "home";
-    setCurrentPage(hash);
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace("#", "") || "home";
+      setCurrentPage(hash);
+    };
+
+    handleHashChange();
+
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
   const navigate = (page: string) => {
@@ -61,6 +70,7 @@ export default function App() {
       case "works": return <WorksPage onOpenModal={() => setIsModalOpen(true)} />;
       case "about": return <AboutPage onOpenModal={() => setIsModalOpen(true)} />;
       case "contacts": return <ContactsPage />;
+      case "privacy": return <PrivacyPage />;
       default: return (
         <HomePage
           onOpenModal={() => setIsModalOpen(true)}
@@ -81,6 +91,7 @@ export default function App() {
         </main>
         <Footer navigate={navigate} />
         {isModalOpen && <CallbackModal onClose={() => setIsModalOpen(false)} />}
+        <CookieBanner />
       </div>
     </TooltipProvider>
   );

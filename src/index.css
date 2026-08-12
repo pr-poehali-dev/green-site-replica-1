@@ -163,6 +163,26 @@
     transform: translateY(-2px);
   }
 
+  .btn-white {
+  background: #ffffff;
+  color: #1d8a3c;
+  border: 2px solid #ffffff;
+  border-radius: 50px;
+  padding: 12px 28px;
+  font-weight: 700;
+  font-size: 15px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  }
+
+  .btn-white:hover {
+    background: #f0fdf4;
+    transform: translateY(-2px);
+  }
+
   .green-gradient-bg {
     background: linear-gradient(135deg, #145e29 0%, #1d8a3c 50%, #22a047 100%);
   }

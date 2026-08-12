@@ -45,12 +45,16 @@ export default function ServicesPage({ onOpenModal }: ServicesPageProps) {
                 <SectionReveal key={i} delay={i * 60}>
                   <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-green-50 hover-lift">
                     <div className={`flex flex-col ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
-                      <div className="md:w-2/5 h-60 md:h-auto overflow-hidden">
-                        <img src={svc.img} alt={svc.title} className="w-full h-full object-cover" />
+                      <div className="relative md:w-2/5 h-60 md:h-auto min-h-[260px] overflow-hidden">
+                        <img 
+                          src={svc.img} 
+                          alt={svc.title} 
+                          className="w-full h-full object-cover md:absolute md:inset-0" 
+                        />
                       </div>
                       <div className="md:w-3/5 p-8 flex flex-col justify-center">
                         <div className="flex items-center gap-3 mb-4">
-                          <div className="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center">
+                          <div className="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center shrink-0">
                             <Icon name={svc.icon} size={24} className="text-green-600" />
                           </div>
                           <h2 className="text-2xl font-black text-gray-900">{svc.title}</h2>

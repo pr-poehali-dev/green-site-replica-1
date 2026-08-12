@@ -31,46 +31,42 @@ const perks = [
 
 export default function AboutPage({ onOpenModal }: AboutPageProps) {
   return (
-    <div className="pt-24" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
-
-      {/* HERO — тёмная тема */}
-      <section style={{ background: "#1a1a1a" }} className="py-20">
-        <div className="container mx-auto px-4">
+    <div className="pt-24">
+      <div className="green-gradient-bg py-16 md:py-20">
+        <div className="container mx-auto px-4 text-center text-white">
           <SectionReveal>
-            <p className="text-xs uppercase tracking-[0.25em] mb-5" style={{ color: "#a8c5a0" }}>
-              о компании
-            </p>
-            <h1
-              className="text-5xl md:text-7xl font-bold leading-tight mb-8"
-              style={{ color: "#f5f0e8", fontFamily: "'Georgia', serif" }}
-            >
+            <span className="inline-block bg-white/20 text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-4 backdrop-blur-sm">
+              О компании
+            </span>
+            <h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight">
               Строим честно.<br />
-              <span style={{ color: "#6db87a" }}>Работаем на результат.</span>
+              <span className="text-green-300">Работаем на результат.</span>
             </h1>
           </SectionReveal>
+
           <SectionReveal delay={150}>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-14 pt-14" style={{ borderTop: "1px solid #333" }}>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-12 pt-10 border-t border-white/20">
               {stats.map((s, i) => (
-                <div key={i}>
-                  <div className="text-4xl md:text-5xl font-bold mb-1" style={{ color: "#6db87a" }}>{s.value}</div>
-                  <div className="text-sm" style={{ color: "#888", fontFamily: "'Manrope', sans-serif" }}>{s.label}</div>
+                <div key={i} className="text-center">
+                  <div className="text-3xl md:text-5xl font-black text-white mb-1">{s.value}</div>
+                  <div className="text-sm text-green-100 font-medium">{s.label}</div>
                 </div>
               ))}
             </div>
           </SectionReveal>
         </div>
-      </section>
+      </div>
 
-      {/* STORY — кремовый фон */}
-      <section style={{ background: "#f5f0e8" }} className="py-20">
+      <section className="py-16 md:py-24 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
             <SectionReveal>
               <div>
-                <p className="text-xs uppercase tracking-[0.2em] mb-6" style={{ color: "#8a7a5a", fontFamily: "'Manrope', sans-serif" }}>
-                  наша история
-                </p>
-                <div className="space-y-5 text-lg leading-relaxed" style={{ color: "#3d3428" }}>
+                <span className="text-xs font-bold uppercase tracking-widest text-green-600 bg-green-100 px-3 py-1 rounded-full mb-4 inline-block">
+                  Наша история
+                </span>
+                <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-6">Надёжный подрядчик с 10-летним опытом</h2>
+                <div className="space-y-4 text-gray-600 leading-relaxed text-base">
                   <p>
                     <strong>Строй-Ремонт</strong> — компания с 10-летним опытом в строительстве и ремонте. Мы работаем без посредников: собственная бригада, собственная техника, собственная ответственность.
                   </p>
@@ -83,42 +79,29 @@ export default function AboutPage({ onOpenModal }: AboutPageProps) {
                 </div>
                 <button
                   onClick={onOpenModal}
-                  className="mt-10 inline-flex items-center gap-3 px-8 py-4 font-bold text-sm tracking-wide transition-all duration-300 hover:gap-5"
-                  style={{
-                    background: "#1a1a1a",
-                    color: "#f5f0e8",
-                    borderRadius: "4px",
-                    fontFamily: "'Manrope', sans-serif",
-                    letterSpacing: "0.05em",
-                  }}
+                  className="btn-green mt-8 inline-flex text-base py-4 px-8"
                 >
-                  Позвонить нам
-                  <Icon name="ArrowRight" size={16} />
+                  <Icon name="PhoneCall" size={18} />
+                  Заказать консультацию
                 </button>
               </div>
             </SectionReveal>
 
             <SectionReveal delay={150}>
               <div className="space-y-4">
-                <div
-                  className="p-8 rounded-sm"
-                  style={{ background: "#1a1a1a", color: "#f5f0e8" }}
-                >
-                  <p className="text-sm mb-3" style={{ color: "#6db87a", fontFamily: "'Manrope', sans-serif", textTransform: "uppercase", letterSpacing: "0.15em" }}>
+                <div className="p-8 rounded-2xl bg-white shadow-sm border border-green-100">
+                  <p className="text-xs font-bold uppercase tracking-widest text-green-600 mb-2">
                     Наш принцип
                   </p>
-                  <p className="text-xl leading-relaxed" style={{ fontFamily: "'Georgia', serif" }}>
+                  <p className="text-lg md:text-xl font-bold text-gray-900 leading-snug">
                     «Цена, согласованная до начала работ, — это цена, которую вы заплатите. Не больше.»
                   </p>
                 </div>
-                <div
-                  className="p-8 rounded-sm"
-                  style={{ background: "#e8e0d0", color: "#3d3428" }}
-                >
-                  <p className="text-sm mb-3" style={{ color: "#8a7a5a", fontFamily: "'Manrope', sans-serif", textTransform: "uppercase", letterSpacing: "0.15em" }}>
+                <div className="p-8 rounded-2xl bg-green-50 border border-green-200">
+                  <p className="text-xs font-bold uppercase tracking-widest text-green-700 mb-2">
                     Регион работы
                   </p>
-                  <p className="text-xl font-bold" style={{ fontFamily: "'Georgia', serif" }}>
+                  <p className="text-xl font-black text-green-900">
                     Москва и Московская область
                   </p>
                 </div>
@@ -128,33 +111,27 @@ export default function AboutPage({ onOpenModal }: AboutPageProps) {
         </div>
       </section>
 
-      {/* PERKS — тёмная тема */}
-      <section style={{ background: "#111" }} className="py-20">
+      <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4">
           <SectionReveal>
-            <p className="text-xs uppercase tracking-[0.25em] mb-3" style={{ color: "#6db87a", fontFamily: "'Manrope', sans-serif" }}>
-              преимущества
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-14" style={{ color: "#f5f0e8" }}>
-              Почему нам доверяют
-            </h2>
+            <div className="text-center mb-12">
+              <span className="text-xs font-bold uppercase tracking-widest text-green-600 bg-green-100 px-3 py-1 rounded-full mb-3 inline-block">
+                Преимущества
+              </span>
+              <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-3">Почему нам доверяют</h2>
+              <p className="text-gray-500 max-w-xl mx-auto">Стандарты качества, за которые мы отвечаем репутацией</p>
+            </div>
           </SectionReveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px" style={{ background: "#2a2a2a" }}>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {perks.map((item, i) => (
               <SectionReveal key={i} delay={i * 60}>
-                <div
-                  className="p-8 group transition-colors duration-300"
-                  style={{ background: "#111" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = "#1a2a1a")}
-                  onMouseLeave={(e) => (e.currentTarget.style.background = "#111")}
-                >
-                  <Icon name={item.icon} size={22} className="mb-5" style={{ color: "#6db87a" }} />
-                  <h3 className="font-bold text-base mb-3" style={{ color: "#f5f0e8", fontFamily: "'Manrope', sans-serif" }}>
-                    {item.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "#666", fontFamily: "'Manrope', sans-serif" }}>
-                    {item.desc}
-                  </p>
+                <div className="p-6 rounded-2xl bg-gray-50 border border-gray-100 hover:border-green-300 hover:shadow-md transition-all duration-300 h-full flex flex-col">
+                  <div className="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center mb-4 text-green-600 shrink-0">
+                    <Icon name={item.icon} size={22} />
+                  </div>
+                  <h3 className="font-bold text-lg text-gray-900 mb-2">{item.title}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed flex-1">{item.desc}</p>
                 </div>
               </SectionReveal>
             ))}
@@ -162,105 +139,81 @@ export default function AboutPage({ onOpenModal }: AboutPageProps) {
         </div>
       </section>
 
-      {/* DISCOUNTS — кремовый */}
-      <section style={{ background: "#f5f0e8" }} className="py-20">
+      <section className="py-16 md:py-24 bg-gray-50">
         <div className="container mx-auto px-4">
           <SectionReveal>
-            <p className="text-xs uppercase tracking-[0.25em] mb-3" style={{ color: "#8a7a5a", fontFamily: "'Manrope', sans-serif" }}>
-              социальная поддержка
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-5" style={{ color: "#1a1a1a" }}>
-              Скидки для льготных категорий
-            </h2>
-            <p className="text-base mb-14" style={{ color: "#6a5a3a", fontFamily: "'Manrope', sans-serif", maxWidth: 540 }}>
-              Мы ценим каждого клиента и предоставляем специальные условия для тех, кто нуждается в поддержке. Размер скидки уточняйте по телефону — рассматриваем каждый случай индивидуально.
-            </p>
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
+                <Icon name="Tag" size={16} /> Социальная поддержка
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-3">Скидки для льготных категорий</h2>
+              <p className="text-gray-500 max-w-xl mx-auto">
+                Мы ценим каждого клиента и предоставляем специальные условия для тех, кто нуждается в поддержке.
+              </p>
+            </div>
           </SectionReveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mb-10 items-stretch">
             {[
               { icon: "UserCheck", title: "Пенсионеры", desc: "Скидка для граждан пенсионного возраста" },
               { icon: "Heart", title: "Инвалиды и ветераны", desc: "Скидка для инвалидов и ветеранов всех категорий" },
-              { icon: "Shield", title: "Семьи участников СВО", desc: "Особые условия для семей участников специальной военной операции" },
+              { icon: "Shield", title: "Семьи участников СВО", desc: "Особые условия для семей участников СВО" },
               { icon: "Users", title: "Многодетные семьи", desc: "Скидка для семей с тремя и более детьми" },
             ].map((item, i) => (
-              <SectionReveal key={i} delay={i * 80}>
-                <div
-                  className="p-6 rounded-sm group transition-colors duration-300"
-                  style={{ background: "#e8e0d0" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = "#1a2a1a")}
-                  onMouseLeave={(e) => (e.currentTarget.style.background = "#e8e0d0")}
-                >
-                  <Icon name={item.icon} size={24} className="mb-4 transition-colors duration-300" style={{ color: "#6db87a" }} />
-                  <h3 className="font-bold text-sm mb-2 transition-colors duration-300 group-hover:text-white" style={{ color: "#1a1a1a", fontFamily: "'Manrope', sans-serif" }}>
-                    {item.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed transition-colors duration-300 group-hover:text-gray-400" style={{ color: "#6a5a3a", fontFamily: "'Manrope', sans-serif" }}>
-                    {item.desc}
-                  </p>
+              <SectionReveal key={i} delay={i * 80} className="h-full">
+                <div className="h-full flex flex-col items-center text-center p-6 rounded-2xl bg-white border border-green-100 shadow-sm hover:border-green-400 transition-colors">
+                  <div className="w-14 h-14 rounded-2xl bg-green-100 flex items-center justify-center mb-4 shrink-0">
+                    <Icon name={item.icon} size={26} className="text-green-600" />
+                  </div>
+                  <h3 className="text-base font-bold text-gray-900 mb-2">{item.title}</h3>
+                  <p className="text-xs text-gray-500 leading-relaxed">{item.desc}</p>
                 </div>
               </SectionReveal>
             ))}
           </div>
+
           <SectionReveal>
-            <a
-              href={`tel:${PHONE}`}
-              className="inline-flex items-center gap-3 px-8 py-4 font-bold text-sm tracking-wide transition-all duration-300 hover:gap-5"
-              style={{
-                background: "#1a1a1a",
-                color: "#f5f0e8",
-                borderRadius: "4px",
-                fontFamily: "'Manrope', sans-serif",
-                letterSpacing: "0.05em",
-              }}
-            >
-              <Icon name="Phone" size={16} />
-              Позвонить и уточнить скидку
-            </a>
+            <div className="text-center">
+              <a
+                href={`tel:${PHONE}`}
+                className="btn-green inline-flex"
+              >
+                <Icon name="Phone" size={18} />
+                Позвонить и уточнить скидку
+              </a>
+            </div>
           </SectionReveal>
         </div>
       </section>
 
-      {/* TEAM — кремовый */}
-      <section style={{ background: "#f5f0e8" }} className="py-20">
+      <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4">
           <SectionReveal>
-            <p className="text-xs uppercase tracking-[0.25em] mb-3" style={{ color: "#8a7a5a", fontFamily: "'Manrope', sans-serif" }}>
-              команда
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-14" style={{ color: "#1a1a1a" }}>
-              Люди, которым доверяют объекты
-            </h2>
+            <div className="text-center mb-12">
+              <span className="text-xs font-bold uppercase tracking-widest text-green-600 bg-green-100 px-3 py-1 rounded-full mb-3 inline-block">
+                Команда
+              </span>
+              <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-3">Люди, которым доверяют объекты</h2>
+              <p className="text-gray-500 max-w-xl mx-auto">Опытные специалисты с профильным образованием</p>
+            </div>
           </SectionReveal>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {team.map((member, i) => (
               <SectionReveal key={i} delay={i * 80}>
-                <div>
-                  <div
-                    className="w-16 h-16 flex items-center justify-center text-2xl font-bold mb-4"
-                    style={{
-                      background: "#1a1a1a",
-                      color: "#6db87a",
-                      fontFamily: "'Georgia', serif",
-                    }}
-                  >
+                <div className="p-6 rounded-2xl bg-gray-50 border border-gray-100 text-center flex flex-col items-center">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-white font-black text-2xl mb-4 shadow-sm">
                     {member.name[0]}
                   </div>
-                  <h3 className="font-bold text-sm mb-1" style={{ color: "#1a1a1a", fontFamily: "'Manrope', sans-serif" }}>
-                    {member.name}
-                  </h3>
-                  <p className="text-xs mb-1" style={{ color: "#6db87a", fontFamily: "'Manrope', sans-serif" }}>
-                    {member.role}
-                  </p>
-                  <p className="text-xs" style={{ color: "#aaa", fontFamily: "'Manrope', sans-serif" }}>
-                    опыт {member.exp}
-                  </p>
+                  <h3 className="font-bold text-gray-900 text-base mb-1">{member.name}</h3>
+                  <p className="text-xs text-green-600 font-bold mb-1">{member.role}</p>
+                  <p className="text-xs text-gray-400">опыт {member.exp}</p>
                 </div>
               </SectionReveal>
             ))}
           </div>
         </div>
       </section>
-
     </div>
   );
 }

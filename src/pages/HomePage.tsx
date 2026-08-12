@@ -156,6 +156,36 @@ export const WA_LINK = `https://wa.me/79804800123`;
 export const TG_LINK = `https://t.me/+79804800123`;
 export const MAX_LINK = `https://max.ru/+79804800123`;
 
+const formatPhoneNumber = (value: string) => {
+  const inputDigits = value.replace(/\D/g, "");
+  if (!inputDigits) return "";
+
+  let digits = inputDigits;
+
+  if (digits.startsWith("7") || digits.startsWith("8")) {
+    digits = digits.substring(1);
+  }
+
+  digits = digits.substring(0, 10);
+
+  let result = "+7";
+
+  if (digits.length > 0) {
+    result += ` (${digits.substring(0, 3)}`;
+  }
+  if (digits.length >= 4) {
+    result += `) ${digits.substring(3, 6)}`;
+  }
+  if (digits.length >= 7) {
+    result += `-${digits.substring(6, 8)}`;
+  }
+  if (digits.length >= 9) {
+    result += `-${digits.substring(8, 10)}`;
+  }
+
+  return result;
+};
+
 function ReviewsCarousel() {
   const [current, setCurrent] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -295,39 +325,52 @@ function ReviewsCarousel() {
 
 export default function HomePage({ onOpenModal, onNavigateService }: HomePageProps) {
   const [heroPhone, setHeroPhone] = useState("");
+  const [heroLocation, setHeroLocation] = useState("");
+  const [heroAgreed, setHeroAgreed] = useState(false);
   const [heroSent, setHeroSent] = useState(false);
+
   const [lightbox, setLightbox] = useState<null | { img: string; title: string }>(null);
+  
   const [calcStep, setCalcStep] = useState(1);
   const [calcData, setCalcData] = useState({ type: "", deadline: "" });
   const [calcName, setCalcName] = useState("");
+  const [calcLocation, setCalcLocation] = useState("");
   const [calcPhone, setCalcPhone] = useState("");
+  const [calcAgreed, setCalcAgreed] = useState(false);
   const [calcSent, setCalcSent] = useState(false);
+
   const [contactName, setContactName] = useState("");
+  const [contactLocation, setContactLocation] = useState("");
   const [contactPhone, setContactPhone] = useState("");
+  const [contactAgreed, setContactAgreed] = useState(false);
   const [contactSent, setContactSent] = useState(false);
 
   const handleHeroSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!heroAgreed) return;
     const { sendTelegram } = await import("@/lib/sendTelegram");
-    await sendTelegram("Не указано", heroPhone, "Форма: герой (узнать стоимость)");
+    await sendTelegram("Не указано", heroPhone, heroLocation, "Форма: герой (узнать стоимость)");
     setHeroSent(true);
   };
+
   const handleCalcSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!calcAgreed) return;
     const { sendTelegram } = await import("@/lib/sendTelegram");
-    await sendTelegram(calcName, calcPhone, `Форма: калькулятор\nВид работ: ${calcData.type}\nСрок: ${calcData.deadline}`);
+    await sendTelegram(calcName, calcPhone, calcLocation, `Форма: калькулятор\nВид работ: ${calcData.type}\nСрок: ${calcData.deadline}`);
     setCalcSent(true);
   };
+
   const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!contactAgreed) return;
     const { sendTelegram } = await import("@/lib/sendTelegram");
-    await sendTelegram(contactName, contactPhone, "Форма: контактная секция");
+    await sendTelegram(contactName, contactPhone, contactLocation, "Форма: контактная секция");
     setContactSent(true);
   };
 
   return (
     <>
-      {/* HERO */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
         <div
           className="absolute inset-0 w-full h-full"
@@ -389,20 +432,57 @@ export default function HomePage({ onOpenModal, onNavigateService }: HomePagePro
           </div>
 
           {!heroSent ? (
-            <form onSubmit={handleHeroSubmit} className="flex flex-col sm:flex-row gap-3 w-full max-w-md">
+            <form onSubmit={handleHeroSubmit} className="flex flex-col gap-3 w-full max-w-xl">
               <input
-                className="form-input flex-1 text-center sm:text-left"
-                style={{ background: "rgba(255,255,255,0.92)", borderRadius: "12px", minWidth: 0 }}
-                type="tel"
-                placeholder="Ваш телефон"
-                value={heroPhone}
-                onChange={(e) => setHeroPhone(e.target.value)}
-                required
+                className="form-input text-center sm:text-left text-base w-full"
+                style={{ background: "rgba(255,255,255,0.92)", borderRadius: "12px" }}
+                type="text"
+                placeholder="Где находится объект? (Истра, КП Лесной или Москва)"
+                value={heroLocation}
+                onChange={(e) => setHeroLocation(e.target.value)}
               />
-              <button type="submit" className="btn-green whitespace-nowrap px-6 py-3 text-base font-bold" style={{ borderRadius: "12px" }}>
-                <Icon name="Calculator" size={18} />
-                Узнайте стоимость бесплатно
-              </button>
+              <div className="flex flex-col sm:flex-row gap-3 w-full">
+                <input
+                  className="form-input flex-1 text-center sm:text-left text-base"
+                  style={{ background: "rgba(255,255,255,0.92)", borderRadius: "12px", minWidth: 0 }}
+                  type="tel"
+                  placeholder="+7 (___) ___-__-__ *"
+                  value={heroPhone}
+                  onChange={(e) => setHeroPhone(formatPhoneNumber(e.target.value))}
+                  required
+                />
+                <button
+                  type="submit"
+                  disabled={!heroAgreed}
+                  className="btn-green whitespace-nowrap px-6 py-3.5 text-base font-bold shrink-0 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                  style={{ borderRadius: "12px" }}
+                >
+                  <Icon name="Calculator" size={18} />
+                  Узнайте стоимость бесплатно
+                </button>
+              </div>
+
+              <div className="flex items-start gap-2.5 pt-1 text-left">
+                <input
+                  type="checkbox"
+                  id="hero-privacy"
+                  checked={heroAgreed}
+                  onChange={(e) => setHeroAgreed(e.target.checked)}
+                  className="mt-1 h-4 w-4 rounded border-gray-300 accent-green-600 focus:ring-green-500 cursor-pointer"
+                  required
+                />
+                <label htmlFor="hero-privacy" className="text-xs text-white/90 leading-snug cursor-pointer select-none">
+                  Я даю согласие на обработку персональных данных и соглашаюсь с{" "}
+                  <a
+                    href="#privacy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-green-300 underline hover:text-green-200"
+                  >
+                    политикой конфиденциальности
+                  </a>
+                </label>
+              </div>
             </form>
           ) : (
             <div className="flex items-center gap-3 px-8 py-4 rounded-2xl" style={{ background: "rgba(255,255,255,0.9)", color: "#2d7a3a" }}>
@@ -416,11 +496,10 @@ export default function HomePage({ onOpenModal, onNavigateService }: HomePagePro
         </div>
       </section>
 
-      {/* ADVANTAGES */}
       <section className="py-12 bg-gray-50/60 border-y border-gray-100">
         <div className="container mx-auto px-4">
           <SectionReveal>
-            <p className="text-xs font-600 uppercase tracking-[0.18em] text-gray-400 text-center mb-8" style={{ fontFamily: "'Georgia', serif", letterSpacing: "0.2em" }}>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 text-center mb-8" style={{ fontFamily: "'Georgia', serif", letterSpacing: "0.2em" }}>
               почему выбирают нас
             </p>
           </SectionReveal>
@@ -429,7 +508,7 @@ export default function HomePage({ onOpenModal, onNavigateService }: HomePagePro
               <SectionReveal key={i} delay={i * 80}>
                 <div className="px-6 py-2 flex flex-col items-center text-center group">
                   <Icon name={adv.icon} size={20} className="text-gray-300 mb-3 group-hover:text-green-400 transition-colors duration-300" />
-                  <h3 className="text-gray-500 text-sm font-500 mb-1 group-hover:text-gray-700 transition-colors duration-300" style={{ fontFamily: "'Georgia', serif" }}>
+                  <h3 className="text-gray-500 text-sm font-medium mb-1 group-hover:text-gray-700 transition-colors duration-300" style={{ fontFamily: "'Georgia', serif" }}>
                     {adv.title}
                   </h3>
                   <p className="text-gray-400 text-xs leading-relaxed hidden lg:block">{adv.desc}</p>
@@ -440,7 +519,6 @@ export default function HomePage({ onOpenModal, onNavigateService }: HomePagePro
         </div>
       </section>
 
-      {/* SERVICES */}
       <section className="py-16 md:py-24 bg-gray-50" id="services">
         <div className="container mx-auto px-4">
           <SectionReveal>
@@ -449,22 +527,26 @@ export default function HomePage({ onOpenModal, onNavigateService }: HomePagePro
               <p className="text-gray-500 max-w-xl mx-auto">Выполняем все виды строительных и ремонтных работ</p>
             </div>
           </SectionReveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-stretch">
             {SERVICES.map((svc, i) => (
-              <SectionReveal key={i} delay={i * 60}>
+              <SectionReveal key={i} delay={i * 60} className="h-full">
                 <div
-                  className="card-service group cursor-pointer"
+                  className="card-service group cursor-pointer h-full flex flex-col justify-between"
                   onClick={() => onNavigateService ? onNavigateService(svc.id) : onOpenModal()}
                 >
-                  <div className="relative h-44 overflow-hidden">
-                    <img src={svc.img} alt={svc.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                    <div className="service-overlay absolute inset-0 flex flex-col justify-end p-4">
-                      <span className="text-white font-black text-lg">{svc.title}</span>
+                  <div>
+                    <div className="relative h-44 overflow-hidden">
+                      <img src={svc.img} alt={svc.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                      <div className="service-overlay absolute inset-0 flex flex-col justify-end p-4">
+                        <span className="text-white font-black text-lg">{svc.title}</span>
+                      </div>
+                    </div>
+                    <div className="p-4">
+                      <p className="text-gray-600 text-sm leading-relaxed">{svc.desc}</p>
                     </div>
                   </div>
-                  <div className="p-4">
-                    <p className="text-gray-600 text-sm leading-relaxed">{svc.desc}</p>
-                    <div className="mt-3 flex items-center gap-1 text-green-600 font-700 text-sm">
+                  <div className="p-4 pt-0">
+                    <div className="flex items-center gap-1 text-green-600 font-bold text-sm">
                       Подробнее <Icon name="ArrowRight" size={14} />
                     </div>
                   </div>
@@ -475,7 +557,6 @@ export default function HomePage({ onOpenModal, onNavigateService }: HomePagePro
         </div>
       </section>
 
-      {/* CALCULATOR / QUIZ */}
       <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4">
           <SectionReveal>
@@ -550,9 +631,46 @@ export default function HomePage({ onOpenModal, onNavigateService }: HomePagePro
                     </div>
                   </div>
                   <form onSubmit={handleCalcSubmit} className="space-y-3">
-                    <input className="form-input" type="text" placeholder="Ваше имя" value={calcName} onChange={(e) => setCalcName(e.target.value)} required />
-                    <input className="form-input" type="tel" placeholder="+7 (___) ___-__-__" value={calcPhone} onChange={(e) => setCalcPhone(e.target.value)} required />
-                    <button type="submit" className="btn-green w-full justify-center py-4 text-base">
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1">Ваше имя *</label>
+                      <input className="form-input" type="text" placeholder="Иван Иванов" value={calcName} onChange={(e) => setCalcName(e.target.value)} required />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1">Где находится объект?</label>
+                      <input className="form-input" type="text" placeholder="Например: Истра, КП Лесной или Москва" value={calcLocation} onChange={(e) => setCalcLocation(e.target.value)} />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1">Телефон *</label>
+                      <input className="form-input" type="tel" placeholder="+7 (___) ___-__-__" value={calcPhone} onChange={(e) => setCalcPhone(formatPhoneNumber(e.target.value))} required />
+                    </div>
+
+                    <div className="flex items-start gap-2.5 pt-1">
+                      <input
+                        type="checkbox"
+                        id="calc-privacy"
+                        checked={calcAgreed}
+                        onChange={(e) => setCalcAgreed(e.target.checked)}
+                        className="mt-1 h-4 w-4 rounded border-gray-300 accent-green-600 focus:ring-green-500 cursor-pointer"
+                        required
+                      />
+                      <label htmlFor="calc-privacy" className="text-xs text-gray-500 leading-snug cursor-pointer select-none">
+                        Я даю согласие на обработку персональных данных и соглашаюсь с{" "}
+                        <a
+                          href="#privacy"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-green-600 underline hover:text-green-700"
+                        >
+                          политикой конфиденциальности
+                        </a>
+                      </label>
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={!calcAgreed}
+                      className="btn-green w-full justify-center py-4 text-base disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                    >
                       <Icon name="Send" size={18} />
                       Получить расчёт
                     </button>
@@ -575,7 +693,6 @@ export default function HomePage({ onOpenModal, onNavigateService }: HomePagePro
         </div>
       </section>
 
-      {/* GALLERY */}
       <section className="py-16 md:py-24 bg-gray-50">
         <div className="container mx-auto px-4">
           <SectionReveal>
@@ -602,10 +719,8 @@ export default function HomePage({ onOpenModal, onNavigateService }: HomePagePro
         </div>
       </section>
 
-      {/* REVIEWS */}
       <ReviewsCarousel />
 
-      {/* DISCOUNTS */}
       <section className="py-16 md:py-24 bg-white" id="discounts">
         <div className="container mx-auto px-4">
           <SectionReveal>
@@ -618,20 +733,20 @@ export default function HomePage({ onOpenModal, onNavigateService }: HomePagePro
             </div>
           </SectionReveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mb-12 items-stretch">
             {[
               { icon: "UserCheck", title: "Пенсионеры", desc: "Скидка для граждан пенсионного возраста" },
               { icon: "Heart", title: "Инвалиды и ветераны", desc: "Скидка для инвалидов и ветеранов всех категорий" },
               { icon: "Shield", title: "Семьи участников СВО", desc: "Особые условия для семей участников специальной военной операции" },
               { icon: "Users", title: "Многодетные семьи", desc: "Скидка для семей с тремя и более детьми" },
             ].map((item, i) => (
-              <SectionReveal key={i} delay={i * 100}>
-                <div className="flex flex-col items-center text-center p-6 rounded-2xl border-2 border-green-100 hover:border-green-400 transition-colors group">
-                  <div className="w-16 h-16 rounded-2xl bg-green-100 group-hover:bg-green-500 flex items-center justify-center mb-4 transition-colors">
+              <SectionReveal key={i} delay={i * 100} className="h-full">
+                <div className="h-full flex flex-col items-center text-center p-6 rounded-2xl border-2 border-green-100 hover:border-green-400 transition-colors group">
+                  <div className="w-16 h-16 rounded-2xl bg-green-100 group-hover:bg-green-500 flex items-center justify-center mb-4 transition-colors shrink-0">
                     <Icon name={item.icon} size={28} className="text-green-600 group-hover:text-white transition-colors" />
                   </div>
                   <h3 className="text-lg font-black text-gray-900 mb-2">{item.title}</h3>
-                  <p className="text-gray-500 text-sm">{item.desc}</p>
+                  <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </SectionReveal>
             ))}
@@ -652,7 +767,6 @@ export default function HomePage({ onOpenModal, onNavigateService }: HomePagePro
         </div>
       </section>
 
-      {/* CONTACTS */}
       <section className="py-16 md:py-24 green-gradient-bg" id="contacts">
         <div className="container mx-auto px-4">
           <SectionReveal>
@@ -713,7 +827,8 @@ export default function HomePage({ onOpenModal, onNavigateService }: HomePagePro
                     </div>
                   </div>
                 </div>
-                <a href={`tel:${PHONE}`} className="btn-outline-green border-white text-white hover:bg-white hover:text-green-700 inline-flex">
+
+                <a href={`tel:${PHONE}`} className="btn-white">
                   <Icon name="PhoneCall" size={18} />
                   Позвонить сейчас
                 </a>
@@ -726,18 +841,48 @@ export default function HomePage({ onOpenModal, onNavigateService }: HomePagePro
                   <h3 className="text-xl font-black text-gray-900 mb-5">Оставить заявку</h3>
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-sm font-600 text-gray-700 mb-1">Ваше имя</label>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1">Ваше имя *</label>
                       <input className="form-input" type="text" placeholder="Иван Иванов" value={contactName} onChange={(e) => setContactName(e.target.value)} required />
                     </div>
                     <div>
-                      <label className="block text-sm font-600 text-gray-700 mb-1">Телефон</label>
-                      <input className="form-input" type="tel" placeholder="+7 (___) ___-__-__" value={contactPhone} onChange={(e) => setContactPhone(e.target.value)} required />
+                      <label className="block text-sm font-semibold text-gray-700 mb-1">Где находится объект?</label>
+                      <input className="form-input" type="text" placeholder="Например: Истра, КП Лесной или Москва" value={contactLocation} onChange={(e) => setContactLocation(e.target.value)} />
                     </div>
-                    <button type="submit" className="btn-green w-full justify-center py-4 text-base">
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1">Телефон *</label>
+                      <input className="form-input" type="tel" placeholder="+7 (___) ___-__-__" value={contactPhone} onChange={(e) => setContactPhone(formatPhoneNumber(e.target.value))} required />
+                    </div>
+
+                    <div className="flex items-start gap-2.5 pt-1">
+                      <input
+                        type="checkbox"
+                        id="contact-privacy"
+                        checked={contactAgreed}
+                        onChange={(e) => setContactAgreed(e.target.checked)}
+                        className="mt-1 h-4 w-4 rounded border-gray-300 accent-green-600 focus:ring-green-500 cursor-pointer"
+                        required
+                      />
+                      <label htmlFor="contact-privacy" className="text-xs text-gray-500 leading-snug cursor-pointer select-none">
+                        Я даю согласие на обработку персональных данных и соглашаюсь с{" "}
+                        <a
+                          href="#privacy"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-green-600 underline hover:text-green-700"
+                        >
+                          политикой конфиденциальности
+                        </a>
+                      </label>
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={!contactAgreed}
+                      className="btn-green w-full justify-center py-4 text-base disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                    >
                       <Icon name="Send" size={18} />
                       Отправить заявку
                     </button>
-                    <p className="text-xs text-gray-400 text-center">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности</p>
                   </div>
                 </form>
               ) : (
@@ -752,7 +897,6 @@ export default function HomePage({ onOpenModal, onNavigateService }: HomePagePro
         </div>
       </section>
 
-      {/* Lightbox */}
       {lightbox && (
         <div className="modal-overlay" onClick={() => setLightbox(null)}>
           <div className="max-w-3xl w-full relative" onClick={(e) => e.stopPropagation()}>

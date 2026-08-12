@@ -78,7 +78,8 @@ export default function Footer({ navigate }: FooterProps) {
           <p className="text-green-400 text-sm">
             © {new Date().getFullYear()} Строй-Ремонт. Все права защищены.
           </p>
-          <button className="text-green-400 text-sm hover:text-white transition-colors">
+          <button className="text-green-400 text-sm hover:text-white transition-colors"
+          onClick={() => navigate("privacy")}>
             Политика конфиденциальности
           </button>
         </div>
