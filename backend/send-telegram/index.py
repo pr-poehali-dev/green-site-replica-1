@@ -40,16 +40,18 @@ def handler(event: dict, context) -> dict:
     payload = json.dumps({"chat_id": TELEGRAM_CHAT_ID, "text": text}).encode()
     req = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json"}, method="POST")
 
-    try:
-        with urllib.request.urlopen(req, timeout=3) as resp:
-            result = json.loads(resp.read())
-    except urllib.error.HTTPError as e:
-        detail = e.read().decode()
-        print(f"Telegram HTTP error: {detail}")
-        result = {"ok": False}
-    except Exception as e:
-        print(f"Telegram error: {e}")
-        result = {"ok": False}
+    result = {"ok": False}
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=8) as resp:
+                result = json.loads(resp.read())
+            break
+        except urllib.error.HTTPError as e:
+            detail = e.read().decode()
+            print(f"Telegram HTTP error: {detail}")
+            break
+        except Exception as e:
+            print(f"Telegram attempt {attempt + 1} failed: {e}")
 
     return {
         "statusCode": 200,
