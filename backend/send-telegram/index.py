@@ -1,8 +1,8 @@
 import json
 import urllib.request
 
-TELEGRAM_BOT_TOKEN = "8537785602:AAHQOtb3GsVQS5EP6Q0Ai7j461NN5_JmNCM"
-TELEGRAM_CHAT_ID = "8698006257"
+TELEGRAM_BOT_TOKEN = "8992719432:AAF6UMeuZ_KEHJOLU0tvYr9xtKJTMlxVe58"
+TELEGRAM_CHAT_ID = "1051652690"
 
 
 def handler(event: dict, context) -> dict:
@@ -39,8 +39,17 @@ def handler(event: dict, context) -> dict:
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     payload = json.dumps({"chat_id": TELEGRAM_CHAT_ID, "text": text}).encode()
     req = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json"}, method="POST")
-    with urllib.request.urlopen(req) as resp:
-        result = json.loads(resp.read())
+
+    try:
+        with urllib.request.urlopen(req, timeout=3) as resp:
+            result = json.loads(resp.read())
+    except urllib.error.HTTPError as e:
+        detail = e.read().decode()
+        print(f"Telegram HTTP error: {detail}")
+        result = {"ok": False}
+    except Exception as e:
+        print(f"Telegram error: {e}")
+        result = {"ok": False}
 
     return {
         "statusCode": 200,
