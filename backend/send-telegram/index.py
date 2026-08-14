@@ -1,8 +1,29 @@
+import http.client
 import json
-import urllib.request
+import socket
+import ssl
 
 TELEGRAM_BOT_TOKEN = "8992719432:AAF6UMeuZ_KEHJOLU0tvYr9xtKJTMlxVe58"
 TELEGRAM_CHAT_ID = "1051652690"
+
+TELEGRAM_IPS = [
+    "149.154.167.220",
+    "149.154.175.50",
+    "149.154.171.5",
+]
+
+
+def _send(ip: str, path: str, payload: bytes) -> dict:
+    ctx = ssl.create_default_context()
+    raw = socket.create_connection((ip, 443), timeout=1.2)
+    sock = ctx.wrap_socket(raw, server_hostname="api.telegram.org")
+    conn = http.client.HTTPSConnection("api.telegram.org", timeout=1.2)
+    conn.sock = sock
+    conn.request("POST", path, body=payload, headers={"Content-Type": "application/json"})
+    resp = conn.getresponse()
+    data = json.loads(resp.read())
+    conn.close()
+    return data
 
 
 def handler(event: dict, context) -> dict:
@@ -28,6 +49,7 @@ def handler(event: dict, context) -> dict:
         body = parsed if isinstance(parsed, dict) else {}
     else:
         body = {}
+
     name = str(body.get("name") or "").strip()
     phone = str(body.get("phone") or "").strip()
     extra = str(body.get("extra") or "")
@@ -36,25 +58,21 @@ def handler(event: dict, context) -> dict:
     if extra:
         text += f"\n{extra}"
 
-    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+    path = f"/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     payload = json.dumps({"chat_id": TELEGRAM_CHAT_ID, "text": text}).encode()
-    req = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json"}, method="POST")
 
     result = {"ok": False}
-    for attempt in range(3):
+    for ip in TELEGRAM_IPS:
         try:
-            with urllib.request.urlopen(req, timeout=8) as resp:
-                result = json.loads(resp.read())
-            break
-        except urllib.error.HTTPError as e:
-            detail = e.read().decode()
-            print(f"Telegram HTTP error: {detail}")
-            break
+            result = _send(ip, path, payload)
+            print(f"Telegram via {ip}: {result}")
+            if result.get("ok"):
+                break
         except Exception as e:
-            print(f"Telegram attempt {attempt + 1} failed: {e}")
+            print(f"Telegram {ip} failed: {e}")
 
     return {
         "statusCode": 200,
         "headers": {"Access-Control-Allow-Origin": "*"},
-        "body": {"ok": result.get("ok", False)},
+        "body": {"ok": bool(result.get("ok"))},
     }
